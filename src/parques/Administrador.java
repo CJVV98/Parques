@@ -5,6 +5,8 @@
  */
 package parques;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author johan
@@ -96,7 +98,15 @@ public class Administrador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("AUI ESTOY");
+        MostrarPersonas panel1=new MostrarPersonas();
+        panel1.setSize(600, 686);
+        panel1.setLocation(30, 50);
+        
+        jPanel1.removeAll();
+        jPanel1.add(panel1,BorderLayout.CENTER);
+        jPanel1.revalidate();
+        jPanel1.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

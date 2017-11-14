@@ -131,6 +131,31 @@ public class Repositorio {
            return 0;
        }
     }
+       
+       public static ArrayList<Persona> obtenerTodos() {
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+
+        try {
+            String query = "SELECT * FROM jugador;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                //t id, int cedula, int edad, String nombre, String apellido, String tipo,Date fechanac, Timestamp fecharegistro)
+                personas.add(Persona.crear(resultado.getInt("id"),resultado.getInt("cedula"),resultado.getInt("edad"),resultado.getString("nombre"),resultado.getString("apellido"),
+                        resultado.getDate("fechanac"),resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return personas;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return personas;
+    }
 }
 
 

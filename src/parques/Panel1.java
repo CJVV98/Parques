@@ -61,21 +61,19 @@ public class Panel1 extends javax.swing.JPanel {
      */
     public void refreshTableModel()
     {
-      /* ArrayList<Persona> lista_personas=Repositorio.obtenerTodos();
+       ArrayList<Persona> lista_personas=Repositorio.obtenerTodos();
        while(table_model_personas.getRowCount()>0){
             table_model_personas.removeRow(0);
        }
        
        for(Persona p: lista_personas){         
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         
-          
+      
             String fecha1 = sdf.format(p.getFechanac());
-            String[] data = {Integer.toString(p.getCedula()),p.getNombre() , p.getNombre(), p.getApellido(), fecha1, Integer.toString(p.getEdad()), p.getTipo()};
+            String[] data = {Integer.toString(p.getCedula()),p.getNombre() , p.getNombre(), p.getApellido(), fecha1, Integer.toString(p.getEdad())};
             table_model_personas.addRow(data);
-       }*/
+       }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

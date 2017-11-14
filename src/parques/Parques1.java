@@ -7,6 +7,8 @@ package parques;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,13 +19,15 @@ import javax.swing.JOptionPane;
  *
  * @author johan
  */
-public class Parques1 extends javax.swing.JPanel implements Runnable{
+public class Parques1 extends javax.swing.JPanel{
  int recorrido=0;
  int jugador=1;
  
- int x=90,y=90,x1=90,y1=110;
- int posX=0,posY=0,posX1=0,posY1=0,mover=0;
+ int x=90,y=90,x1=90,y1=110,turno=1;
+ int mover2=0;
  int dado11,dado21;
+ 
+ Contador hilo1,hilo2,hilo3,hilo4,hilo5,hilo6,hilo7,hilo8,hilo9,hilo10;
  
  int [] posX7={250,120,430,560};
  int [] posY7={130,440,560,250};
@@ -35,12 +39,11 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
   int [] posicionSY={0,120,230,560,560};
  
          
- Thread hilo1,hilo2;
+
     /**
      * Creates new form Parques1
      */
     public Parques1() {
-       
         initComponents();
         
         
@@ -48,8 +51,7 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
     }
     public void paint(Graphics sd){
         super.paint(sd);
-        ficha1.setLocation(x, y);
-        ficha2.setLocation(x1, y1);
+      
        
     }
 
@@ -78,6 +80,11 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
         setLayout(null);
 
         ficha4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bola2.jpg"))); // NOI18N
+        ficha4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ficha4MouseClicked(evt);
+            }
+        });
         add(ficha4);
         ficha4.setBounds(560, 130, 18, 16);
 
@@ -86,6 +93,11 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
         jLabel5.setBounds(260, 560, 10, 14);
 
         ficha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bola2.jpg"))); // NOI18N
+        ficha3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ficha3MouseClicked(evt);
+            }
+        });
         add(ficha3);
         ficha3.setBounds(560, 100, 18, 16);
 
@@ -115,11 +127,6 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
         lanzar.setBackground(new java.awt.Color(0, 102, 102));
         lanzar.setForeground(new java.awt.Color(255, 255, 255));
         lanzar.setText("LANZAR");
-        lanzar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lanzarActionPerformed(evt);
-            }
-        });
         add(lanzar);
         lanzar.setBounds(770, 130, 100, 30);
 
@@ -149,42 +156,131 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
         jLabel2.setBounds(-45, -3, 1050, 790);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarActionPerformed
-      switch(jugador){
-          case 1:{
-              lanzarDados(1);
-              break;
-          }
-          case 2:{
-              lanzarDados(2);
-              break; 
-          }
-          
-      }
-     
-    }//GEN-LAST:event_lanzarActionPerformed
+public void turnos(){
+   if(turno==1){
+   lanzar.addActionListener(new ActionListener() {
+                        @Override
+			public void actionPerformed(ActionEvent e) {
+                            System.out.println("LANZAR 1");
+				lanzarDados(turno);
+			}
+		}
+		);}
+   if(turno==2){
+       lanzar.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+                System.out.println("LANZAR 2");
+                lanzarDados(turno);
+           }
+           
+       });
+   }
 
+}
     private void ficha2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ficha2MouseClicked
-     System.out.println("AQUI ESToy desd hace arto "+mover);
-      if(mover==7){
-      moverficha(2,7);
+    
+      if(mover2==7){
+         if(hilo6!=null){
+                               hilo6.reset();
+                            }else{
+                                        hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1);
+                                        hilo6.start();
+              
+                           }
       }
-      if(mover==5){
-          System.out.println("AQUI ESTOY 5$$$$");
-            moverficha(2,5);
+      if(mover2==5){
+           if(hilo8!=null){
+                               hilo8.reset();
+                            }else{
+
+                                    hilo8= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1);
+                                    hilo8.start();
+           
+                           }
       }
     }//GEN-LAST:event_ficha2MouseClicked
 
     private void ficha1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ficha1MouseClicked
-      System.out.println("AQUI ESToy desd hace arto "+mover); 
-     if(mover==7){
-      moverficha(1,7);
+ 
+     if(mover2==7){
+                           if(hilo5!=null){
+                               hilo5.reset();
+                            }else{
+                               
+                                hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2);
+                                hilo5.start();   
+                                }
+                                
+                                
       }
-      if(mover==5){
-          System.out.println("AQUI ESTOY 5.....");
-            moverficha(1,5);
+      if(mover2==5){
+           if(hilo7!=null){
+                             hilo7.reset();
+                            }else{
+                            
+                                hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2);
+                                hilo7.start();
+                                
+                             
+                               
+                               
+                           }
       }
     }//GEN-LAST:event_ficha1MouseClicked
+
+    private void ficha3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ficha3MouseClicked
+        if(mover2==7){
+         if(hilo6!=null){
+                               hilo6.reset();
+                            }else{
+                             
+                                        hilo6= new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4);
+                                        hilo6.start();
+                             
+                                
+                               
+                           }
+      }
+      if(mover2==5){
+           if(hilo8!=null){
+                               hilo8.reset();
+                            }else{
+                              
+                                    hilo8= new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4);
+                                    hilo8.start();
+                                 
+                                
+                                 
+                           }
+      }
+    }//GEN-LAST:event_ficha3MouseClicked
+
+    private void ficha4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ficha4MouseClicked
+       
+      if(mover2==7){
+         if(hilo6!=null){
+                               hilo6.reset();
+                            }else{
+                               
+                                        hilo6= new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3);
+                                        hilo6.start();
+                             
+                           }
+      }
+      if(mover2==5){
+           if(hilo8!=null){
+                               hilo8.reset();
+                            }else{
+                               
+                                    hilo8= new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3);
+                                    hilo8.start();
+                                 
+                                
+                                 
+                           }
+      }
+    }//GEN-LAST:event_ficha4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,50 +305,35 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
         
         ficha1.setEnabled(false);
         ficha2.setEnabled(false);
-        
+  
+        turno=2;
+       
         if(dado1==dado2){
-            if(jugador==1){
-            ficha1.setEnabled(true);
-            ficha2.setEnabled(true);
-                System.out.println("AQUI ESTOY CUANDO ES PAR");
-           if(hilo1!=null){
-               
-               hilo1=new Thread(this);
-               hilo1.start();
-               
-               
-           }
-           else{
-                hilo1=new Thread(this);
-                hilo1.start();
-           }
-           jugador=2;
-            }
-            else{
-                if(jugador==2){
-                    ficha3.setEnabled(true);
-                    ficha4.setEnabled(true); 
+                turno=1;
+                ficha1.setEnabled(true);
+                ficha2.setEnabled(true);
                         System.out.println("AQUI ESTOY CUANDO ES PAR");
-                        if(hilo1!=null){
+                   if(hilo1!=null){
+                    hilo1.reset();
 
-                            hilo1=new Thread(this);
-                            hilo1.start();
-
-
-                        }
-                        else{
-                             hilo1=new Thread(this);
-                             hilo1.start();
-                        }
-                             }
-                        jugador=1;
-                         }
-            //recorrido++;
-            System.out.println("AQUI ESTOY CUANDO ES PAR");
+                     }else{
+                    hilo1 = new Contador(ficha1,1,ficha1.getX(),ficha1.getY(),ficha2);
+                    hilo1.start();
+                   }
+                   if(hilo2!=null){
+                       hilo2.reset();
+                    }else{
+                        hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1);
+                        hilo2.start();
+                   }
+                  
+                  
+                
            
            
         }
         if((dado1+dado2)==7){
+            turno=1;
             movimientos=0;
             movficha1=0;
             movficha2=0;
@@ -269,17 +350,36 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
                 }
             }
               if(movimientos>=2){
-                    mover=7;
+                    mover2=7;
                     System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");
                     ficha1.setEnabled(true);
                      ficha2.setEnabled(true); 
                     JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
               }else{
                   if(movficha1==1){
-                      moverficha(1,7);
-                  }else{
+                      if(hilo5!=null){
+                               hilo5.reset();
+                            }else{
+                             
+                                hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2);
+                                hilo5.start();
+                            
+                                }
+                                
+                                
+                           }
+                  else{
                       if(movficha2==1){
-                          moverficha(2,7);
+                          if(hilo6!=null){
+                               hilo6.reset();
+                            }else{
+                             
+                                        hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1);
+                                        hilo6.start();
+                                
+                                
+                               
+                           }
                       }
                   }
               }
@@ -290,6 +390,7 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
             movficha1=0;
             movficha2=0;
             movimientos=0;
+            turno=1;
             for(int i=0;i<posX5.length;i++){
                  //  System.out.println("ENTRO AQUI 1"+posX5[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
                 if((ficha1.getX()<=(posX5[i]+20) && ficha1.getX()>=(posX5[i]-20)) && (ficha1.getY()<=(posY5[i]+20) && ficha1.getY()>=(posY5[i]-20))  ){
@@ -305,7 +406,7 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
                 }
             }
               if(movimientos>=2){
-                    mover=5;
+                    mover2=5;
                      System.out.println("AQUI ESTOY 171111 "+movimientos);
                     ficha1.setEnabled(true);
                      ficha2.setEnabled(true); 
@@ -313,292 +414,35 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
               }else{
                   if(movficha1==1){
                        System.out.println("AQUI ESTOY 181111 " +movficha1);
-                      moverficha(1,5);
+                      if(hilo7!=null){
+                               hilo7.reset();
+                            }else{
+                                
+                                hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2);
+                                hilo7.start();
+    
+                           }
                   }else{
                       if(movficha2==1){
                            System.out.println("AQUI ESTOY 191111 "+movficha2);
-                          moverficha(2,5);
+                         if(hilo8!=null){
+                               hilo8.reset();
+                            }else{
+                           
+                                    hilo8= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1);
+                                    jugador=1;
+                                    hilo8.start();
+            
+                           }
                       }
                   }
               }
         }
-      
-    }
-
-    @Override
-    public void run() {
-        int bandera=0,posicion=0;
-        try{
-          if((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205) ){
-              posicion=1;
-          }else{
-              if((ficha3.getX()>430 &&ficha3.getX()<660)&&(ficha3.getY()>5&&ficha3.getY()<205) ){
-                posicion=2;
-          }
-          }
-           while(x<=posicionSX[posicion] || y<=posicionSY[posicion]){
-               if(x<=posicionSX[posicion]){
-               Thread.sleep(90);
-               x+=10;
-               repaint();
-               }
-               if(y<=posicionSY[posicion]){
-                    Thread.sleep(90);
-                    y+=10;
-                    repaint();
-               }
-           }
-           while((x1<=(posicionSX[1]+15))|| (y<=(posicionSY[1]+15))){
-               if(x1<=(posicionSX[1]+15)){
-               Thread.sleep(90);
-               x1+=10;
-               repaint();
-               }
-               if(y1<=(posicionSY[1]+15)){
-                    Thread.sleep(90);
-                    y1+=10;
-                    repaint();
-               }
-           }
-        
-        } catch (InterruptedException ex) {
-         Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
-        
+        if(turno==2){
+             JOptionPane.showMessageDialog(this, "Turno del jugador 2", "Error", JOptionPane.ERROR_MESSAGE);
         }
-}
-
-    private void moverficha(int ficha,int mover) {
-        int j=0;
-       switch(mover){
-           case 7:{ 
-       
-        switch(ficha){
-            case 1:{
-              for( j=0;j<posicionesX.length;j++){
-                if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){  
-                  for(int i=0;i<posX7.length;i++){
-                  //  System.out.println(ficha2.getX()+"--"+posicionesX[i]+"---"+posicionesY[i]+"--"+ficha2.getY());
-                   if((ficha1.getX()<=(posX7[i]+20) && ficha1.getX()>=(posX7[i]-20)) && (ficha1.getY()<=(posY7[i]+20) && ficha1.getY()>=(posY7[i]-20))  ){
-                       System.out.println("AQUI ESTOY 12");
-                       if(i==0||i==2){
-                           System.out.println("AQUI ESTOY 13");
-                        if(ficha2.getY()<=(posicionesY[j+1]+20) && ficha2.getY()>=(posicionesY[j+1]-20)){
-                            System.out.println("AQUI ESTOY 14");
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]+15);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 15");
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                              break;
-                     }
-                    }
-                     else{
-                           if(ficha2.getX()<=(posicionesX[j+1]+20) && ficha2.getX()>=(posicionesX[j+1]-20)){
-                            System.out.println("AQUI ESTOY 16");
-                            x=(posicionesX[j+1]+15);
-                            y=posicionesY[j+1];
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 17");
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            break;
-                            
-                     }
-                     }
-                  }
-                }
-                }
-              }
-                break;  
-            }
-          case 2:{
-            for(j=0;j<posicionesX.length;j++){
-              if((ficha2.getX()<=(posicionesX[j]+20) && ficha2.getX()>=(posicionesX[j]-20)) && (ficha2.getY()<=(posicionesY[j]+20) && ficha2.getY()>=(posicionesY[j]-20))  ){  
-              
-                for(int i=0;i<posX7.length;i++){
-                   // System.out.println(ficha2.getX()+"--"+posicionesX[i]+"---"+posicionesY[i]+"--"+ficha2.getY());
-                   if((ficha2.getX()<=(posX7[i]+20) && ficha2.getX()>=(posX7[i]-20)) && (ficha2.getY()<=(posY7[i]+20) && ficha2.getY()>=(posY7[i]-20))  ){
-                       System.out.println("AQUI ESTOY 12--");
-                       if(i==0||i==2){
-                           System.out.println("AQUI ESTOY 13");
-                        if(ficha1.getY()<=(posicionesY[j+1]+20) && ficha1.getY()>=(posicionesY[j+1]-20)){
-                            System.out.println("AQUI ESTOY 14--");
-                            x1=posicionesX[j+1];
-                            y1=(posicionesY[j+1]+15);
-                            ficha2.setLocation(x1, y1);
-                             System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                            j++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 15--");
-                            x1=posicionesX[j+1];
-                            y1=(posicionesY[j+1]);
-                            ficha2.setLocation(x1, y1);
-                             System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                            j++;
-                              break;
-                     }
-                    }
-                     else{
-                            if(ficha1.getX()<=(posicionesX[j+1]+20) && ficha2.getX()>=(posicionesX[j+1]-20)){
-                            System.out.println("AQUI ESTOY 16--");
-                            x1=(posicionesX[j+1]+15);
-                            y1=posicionesY[j+1];
-                            ficha2.setLocation(x1, y1);
-                            System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                            j++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 17--");
-                            x1=posicionesX[j+1];
-                            y1=(posicionesY[j+1]);
-                            ficha2.setLocation(x1, y1);
-                             System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                            j++;
-                            break;
-                            
-                     }
-                     }
-                  }
-                }
-                
-               break; 
-            }
-        }}}
-           break;
-           } 
-           case 5:{
-               System.out.println("ENTRE A FICHA 5-----------------");
-             switch(ficha){
-               case 1:{
-                 for(j=0;j<posicionesX.length;j++){
-                        if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){  
-                          for(int i=0;i<posX5.length;i++){
-                          
-                           if((ficha1.getX()<=(posX5[i]+20) && ficha1.getX()>=(posX5[i]-20)) && (ficha1.getY()<=(posY5[i]+20) && ficha1.getY()>=(posY5[i]-20))  ){
-                               System.out.println("AQUI ESTOY 121");
-                               if(i==0||i==1 || i==4 || i==5){
-                                   System.out.println("AQUI ESTOY 131");
-                                if(ficha2.getY()<=(posicionesY[j+1]+20) && ficha2.getY()>=(posicionesY[j+1]-20)){
-                                    System.out.println("AQUI ESTOY 141");
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]+15);
-                                    ficha1.setLocation(x, y);
-                                    j++;
-                                    System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                    break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 151");
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]);
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                      break;
-                             }
-                            }
-                             else{
-                                   if(ficha2.getX()<=(posicionesX[j+1]+20) && ficha2.getX()>=(posicionesX[j+1]-20)){
-                                    System.out.println("AQUI ESTOY 161");
-                                    x=(posicionesX[j+1]+15);
-                                    y=posicionesY[j+1];
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                    break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 171");
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]);
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                    break;
-
-                             }
-                             }
-                          }
-                        }
-                        }}
-                        break;  
-                    }
-                 case 2:{
-                    for(j=0;j<posicionesX.length;j++){
-                      if((ficha2.getX()<=(posicionesX[j]+20) && ficha2.getX()>=(posicionesX[j]-20)) && (ficha2.getY()<=(posicionesY[j]+20) && ficha2.getY()>=(posicionesY[j]-20))  ){  
-                        for(int i=0;i<posX5.length;i++){
-                            //System.out.println(ficha2.getX()+"--"+posicionesX[i]+"---"+posicionesY[i]+"--"+ficha2.getY());
-                           if((ficha2.getX()<=(posX5[i]+20) && ficha2.getX()>=(posX5[i]-20)) && (ficha2.getY()<=(posY5[i]+20) && ficha2.getY()>=(posY5[i]-20))  ){
-                               System.out.println("AQUI ESTOY 122");
-                               if(i==0||i==2){
-                                   System.out.println("AQUI ESTOY 132");
-                                if(ficha1.getY()<=(posicionesY[j+1]+20) && ficha2.getY()>=(posicionesY[j+1]-20)){
-                                    System.out.println("AQUI ESTOY 142");
-                                    x1=posicionesX[j+1];
-                                    y1=(posicionesY[j+1]+15);
-                                    ficha2.setLocation(x1, y1);
-                                     j++;
-                                     System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                                    break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 152");
-                                    x1=posicionesX[j+1];
-                                    y1=(posicionesY[j+1]);
-                                    ficha2.setLocation(x1, y1);
-                                     j++;
-                                     System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                                      break;
-                             }
-                            }
-                             else{
-                                   if(ficha1.getY()<=(posX5[i]+20) && ficha1.getY()>=(posX5[i]-20)){
-                                    System.out.println("AQUI ESTOY 16");
-                                    x1=(posicionesX[j+1]+15);
-                                    y1=posicionesY[j+1];
-                                    ficha2.setLocation(x1, y1);
-                                     j++;
-                                     System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                                    break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 17");
-                                    x1=posicionesX[j+1];
-                                    y1=(posicionesY[j+1]);
-                                    ficha2.setLocation(x1, y1);
-                                     j++;
-                                     System.out.println(ficha2.getX()+"--"+ficha2.getY());
-                                    break;
-
-                             }
-                                  
-                             }
-                               
-                          }
-                        }
-
-                       break; 
-            } 
-               } 
-                 }}
-               break;
-           }
-    }
        }
-
-  
+       
 
     private void lanzarDados(int jugador) {
         dado11=(int)(Math.random()*6)+1;
@@ -692,7 +536,147 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
                    break;
           }
       }
-       
-       movimientos(dado11,dado21,jugador);
+       if(jugador==1){
+            movimientos(dado11,dado21,jugador);
+       }
+       if(jugador==2){
+            movimientosj2(dado11,dado21,jugador);
+       }
     }
+
+    private void movimientosj2(int dado1, int dado2, int jugador) {
+        int movimientos=0;
+       int movficha1=0,movficha2=0;
+        
+        ficha3.setEnabled(false);
+        ficha4.setEnabled(false);
+            turno=1;
+             if(dado1==dado2){
+                 turno=2;
+                 ficha3.setEnabled(true);
+                 ficha4.setEnabled(true);
+                  System.out.println("AQUI ESTOY CUANDO ES PAR----2");                
+                    System.out.println("JUGADOR 2");
+                    ficha3.setEnabled(true);
+                    ficha4.setEnabled(true); 
+                        System.out.println("AQUI ESTOY CUANDO ES PAR");
+                         if(hilo3!=null){
+                            hilo3.reset();
+
+                             }else{
+                            hilo3 = new Contador(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4);
+                            hilo3.start();
+                           }
+                           if(hilo4!=null){
+                               hilo4.reset();
+                            }else{
+                                hilo4 = new Contador(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3);
+                                hilo4.start();
+                           }                     
+                         }
+
+        if((dado1+dado2)==7){
+            movimientos=0;
+            movficha1=0;
+            movficha2=0;
+            turno=2;
+            for(int i=0;i<posX7.length;i++){
+                   //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
+                if((ficha3.getX()<=(posX7[i]+20) && ficha3.getX()>=(posX7[i]-20)) && (ficha3.getY()<=(posY7[i]+20) && ficha3.getY()>=(posY7[i]-20))  ){
+                    movficha1++;
+                    movimientos++;
+                 }
+                 if((ficha4.getX()<=(posX7[i]+20)&&ficha4.getX()>=(posX7[i]-20)) && (ficha4.getY()<=(posY7[i]+20) && ficha4.getY()>=(posY7[i]-20))  ){
+                        movficha2++;
+                        movimientos++;
+                   
+                }
+            }
+              if(movimientos>=2){
+                    mover2=7;
+                    System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");
+                    ficha3.setEnabled(true);
+                    ficha4.setEnabled(true); 
+                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
+              }else{
+                  if(movficha1==1){
+                      if(hilo5!=null){
+                               hilo5.reset();
+                            }else{
+                                hilo5 = new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4);
+                           }
+                
+                           }
+                  else{
+                      if(movficha2==1){
+                          if(hilo6!=null){
+                               hilo6.reset();
+                            }else{
+                                     hilo6 = new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3);
+                                     hilo6.start();
+                                    
+                                }
+                               
+                           }
+                      
+                  }
+              }
+              
+            
+            }
+        if((dado1+dado2)==5 || dado1==5 || dado2==5){
+            turno=2;
+            movficha1=0;
+            movficha2=0;
+            movimientos=0;
+            for(int i=0;i<posX5.length;i++){
+                 //  System.out.println("ENTRO AQUI 1"+posX5[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
+                if((ficha3.getX()<=(posX5[i]+20) && ficha3.getX()>=(posX5[i]-20)) && (ficha3.getY()<=(posY5[i]+20) && ficha3.getY()>=(posY5[i]-20))  ){
+                     System.out.println("AQUI ESTOY 151111-------");
+                    movficha1++;
+                    movimientos++;
+                 }
+                 if((ficha4.getX()<=(posX5[i]+20)&&ficha4.getX()>=(posX5[i]-20)) && (ficha4.getY()<=(posY5[i]+20) && ficha4.getY()>=(posY5[i]-20))  ){
+                        System.out.println("AQUI ESTOY 161111-------");
+                        movficha2++;
+                        movimientos++;
+                   
+                }
+            }
+              if(movimientos>=2){
+                    mover2=5;
+                     System.out.println("AQUI ESTOY 171111 -----"+movimientos);
+                     ficha3.setEnabled(true);
+                     ficha4.setEnabled(true); 
+                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
+              }else{
+                  if(movficha1==1){
+                       System.out.println("AQUI ESTOY 181111 ---" +movficha1);
+                      if(hilo7!=null){
+                               hilo7.reset();
+                            }else{
+                                  hilo7 = new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4);
+                                  hilo7.start();
+                                  
+                               
+                           }
+                  }else{
+                      if(movficha2==1){
+                           System.out.println("AQUI ESTOY 191111--- "+movficha2);
+                         if(hilo8!=null){
+                               hilo8.reset();
+                            }else{
+                                    hilo8 = new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3);
+                                    hilo8.start();
+                                    
+                                
+                           }
+                      }
+                  }
+              }	
+    }
+     if(turno==1){
+             JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+}
 }

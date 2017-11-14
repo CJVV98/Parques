@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hilos301;
+package parques;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,14 +25,15 @@ public class Contador extends Thread {
  int [] posicionSY={0,130,230,560,560};
  JLabel ficha1,ficha2;
  int mover;
- int ficha,j=0;
+ int j=0;
  int i=0;
  int x,y;
 
     
-    Contador(JLabel _label, int _velocidad, int _ficha, int _mover, int x1,int y1){
+    Contador(JLabel _label, int _mover, int x1,int y1,JLabel _label2){
         this.ficha1=_label;
-        this.ficha=_ficha;
+         this.ficha2=_label2;
+      
         this.mover=_mover;
         this.x=x1;
         this.y=y1;
@@ -43,36 +44,46 @@ public class Contador extends Thread {
     public void run(){
         switch(mover){
              case 1:{
+                 System.out.println("SALIR DE BLOQUEO");
                   int bandera=0,posicion=0;
-        try{
-          if((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205) ){
-              posicion=1;
-          }else{
-              if((ficha2.getX()>430 &&ficha2.getX()<660)&&(ficha2.getY()>5&&ficha2.getY()<205) ){
-                posicion=2;
-          }
-          }
-           while(x<=posicionSX[posicion] || y<=posicionSY[posicion]){
-               if(x<=posicionSX[posicion]){
-               Thread.sleep(90);
-               x+=10;
-             
-               }
-               if(y<=posicionSY[posicion]){
-                    Thread.sleep(90);
-                    y+=10;
-                    
-               }
-           }
-          
-        
-        } catch (InterruptedException ex) {
-         Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
-        
-        }
+                    try{
+                      if((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205) ){
+                          System.out.println("aqui esta 1");
+                          posicion=1;
+                      }else{
+                          if((ficha1.getX()>430 &&ficha1.getX()<660)&&(ficha1.getY()>5&&ficha1.getY()<205) ){
+                              System.out.println("aqui esta 2");
+                              posicion=2;
+                      }
+                      }
+                      
+                       while(x<=posicionSX[posicion] || y<=posicionSY[posicion]){
+                           System.out.println("primera vex"+x);
+                           if(x<=posicionSX[posicion]){
+                                System.out.println("-----primera vex"+x);
+                           Thread.sleep(90);
+                           x+=10;
+                           ficha1.setLocation(x, y);
+
+                           }
+                           if(y<=posicionSY[posicion]){
+                                System.out.println("++++++primera vex"+x);
+                                Thread.sleep(90);
+                                y+=10;
+                                ficha1.setLocation(x, y);
+
+                           }
+                       }
+
+
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
                  break;
              }
            case 7:{ 
+               System.out.println("CORRER 7");
                  for( j=0;j<posicionesX.length;j++){
                     if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){  
                   for(int i=0;i<posX7.length;i++){
@@ -128,9 +139,9 @@ public class Contador extends Thread {
           
           
            case 5:{
+               System.out.println("CORRER 5");
                System.out.println("ENTRE A FICHA 5-----------------");
-             switch(ficha){
-               case 1:{
+            
                  for(j=0;j<posicionesX.length;j++){
                         if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){  
                           for(int i=0;i<posX5.length;i++){
@@ -180,10 +191,7 @@ public class Contador extends Thread {
                           }
                         }
                         }}
-                        break;  
-                    }
-           }
-             
+                       
            }
     }
      
@@ -193,6 +201,6 @@ public class Contador extends Thread {
     
     public void reset(){
         this.mover=0;
-        this.ficha=0;
+       
     }
 }

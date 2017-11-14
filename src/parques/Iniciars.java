@@ -125,10 +125,10 @@ public class Iniciars extends javax.swing.JPanel {
         System.out.println("Contraseña"+contrasena_txt.getText());
         if(Repositorio.validaruser(cedula, contrasena_txt.getText())==1){
         System.out.println("AUI ESTOY");
-        Parques1 panel1=new Parques1();
+        Parques1 panel1=new Parques1();       
         panel1.setSize(1000, 686);
         panel1.setLocation(0, 0);
-        
+        panel1.turnos();
         removeAll();
         add(panel1,BorderLayout.CENTER);
         revalidate();

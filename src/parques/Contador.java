@@ -99,6 +99,7 @@ public class Contador extends Thread {
                             ficha1.setLocation(x, y);
                              System.out.println(ficha1.getX()+"--"+ficha1.getY());
                             j++;
+                            i++;
                             break;
                         }else{
                             System.out.println("AQUI ESTOY 15");
@@ -107,6 +108,7 @@ public class Contador extends Thread {
                             ficha1.setLocation(x, y);
                              System.out.println(ficha1.getX()+"--"+ficha1.getY());
                             j++;
+                            i++;
                               break;
                      }
                     }
@@ -118,6 +120,7 @@ public class Contador extends Thread {
                             ficha1.setLocation(x, y);
                              System.out.println(ficha1.getX()+"--"+ficha1.getY());
                             j++;
+                            i++;
                             break;
                         }else{
                             System.out.println("AQUI ESTOY 17");
@@ -126,6 +129,7 @@ public class Contador extends Thread {
                             ficha1.setLocation(x, y);
                              System.out.println(ficha1.getX()+"--"+ficha1.getY());
                             j++;
+                            i++;
                             break;
                             
                      }
@@ -156,6 +160,7 @@ public class Contador extends Thread {
                                     y=(posicionesY[j+1]+15);
                                     ficha1.setLocation(x, y);
                                     j++;
+                                    i++;
                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
                                     break;
                                 }else{
@@ -164,6 +169,7 @@ public class Contador extends Thread {
                                     y=(posicionesY[j+1]);
                                     ficha1.setLocation(x, y);
                                      j++;
+                                     i++;
                                      System.out.println(ficha1.getX()+"--"+ficha1.getY());
                                       break;
                              }
@@ -175,6 +181,7 @@ public class Contador extends Thread {
                                     y=posicionesY[j+1];
                                     ficha1.setLocation(x, y);
                                      j++;
+                                     i++;
                                      System.out.println(ficha1.getX()+"--"+ficha1.getY());
                                     break;
                                 }else{
@@ -183,6 +190,7 @@ public class Contador extends Thread {
                                     y=(posicionesY[j+1]);
                                     ficha1.setLocation(x, y);
                                      j++;
+                                     i++;
                                      System.out.println(ficha1.getX()+"--"+ficha1.getY());
                                     break;
 
@@ -201,6 +209,7 @@ public class Contador extends Thread {
     
     public void reset(){
         this.mover=0;
+        this.j=0;
        
     }
 }

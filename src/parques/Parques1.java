@@ -31,8 +31,8 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
  int [] posY5={260,350,560,670,440,340,130,18};
  int []posicionesX={270,120,10,120,260,340,430,560,670,560,420,340};
  int []posicionesY={130,260,350,440,560,670,560,420,340,250,130,18};
- int [] posicionSX={0,250,560,440,260};
-  int [] posicionSY={0,130,230,560,560};
+ int [] posicionSX={0,240,560,440,260};
+  int [] posicionSY={0,120,230,560,560};
  
          
  Thread hilo1,hilo2;
@@ -332,29 +332,29 @@ public class Parques1 extends javax.swing.JPanel implements Runnable{
           if((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205) ){
               posicion=1;
           }else{
-              if((ficha3.getX()>430 &&ficha1.getX()<660)&&(ficha3.getY()>5&&ficha1.getY()<205) ){
+              if((ficha3.getX()>430 &&ficha3.getX()<660)&&(ficha3.getY()>5&&ficha3.getY()<205) ){
                 posicion=2;
           }
           }
-           while(x<=posicionSX[1] || y<=posicionSY[1]){
-               if(x<=posX){
+           while(x<=posicionSX[posicion] || y<=posicionSY[posicion]){
+               if(x<=posicionSX[posicion]){
                Thread.sleep(90);
                x+=10;
                repaint();
                }
-               if(y<=posY){
+               if(y<=posicionSY[posicion]){
                     Thread.sleep(90);
                     y+=10;
                     repaint();
                }
            }
            while((x1<=(posicionSX[1]+15))|| (y<=(posicionSY[1]+15))){
-               if(x1<=260){
+               if(x1<=(posicionSX[1]+15)){
                Thread.sleep(90);
                x1+=10;
                repaint();
                }
-               if(y1<=120){
+               if(y1<=(posicionSY[1]+15)){
                     Thread.sleep(90);
                     y1+=10;
                     repaint();

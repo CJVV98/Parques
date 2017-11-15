@@ -70,7 +70,7 @@ public class Panel1 extends javax.swing.JPanel {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
       
             String fecha1 = sdf.format(p.getFechanac());
-            String[] data = {Integer.toString(p.getCedula()),p.getNombre() , p.getNombre(), p.getApellido(), fecha1, Integer.toString(p.getEdad())};
+            String[] data = {Integer.toString(p.getCedula()),p.getNombre(), p.getApellido(), fecha1, Integer.toString(p.getEdad())};
             table_model_personas.addRow(data);
        }
     }

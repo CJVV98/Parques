@@ -21,8 +21,8 @@ public class Contador extends Thread {
 
   int []auxiliar2={250,120,10,120,250,330,440,560,680,560,430,340};
  int []auxiliar1={110,240,350,430,550,670,560,440,330,260,110,0};//Y
- int [] posicionSX={0,250,550,440,260};
- int [] posicionSY={0,110,250,560,560};
+ int [] posicionSX={0,250,550,410,120};
+ int [] posicionSY={0,110,250,550,440};
  JButton ficha1,ficha2,ficha3,ficha4;
  int mover;
  int j=0,auxiliar=11;
@@ -108,7 +108,7 @@ public class Contador extends Thread {
                System.out.println("CORRER 7");
                
                  for( j=0;j<posicionesX.length;j++){
-                     if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                     if((ficha1.getX()<=(posicionesX[j]+30) && ficha1.getX()>=(posicionesX[j]-30)) && (ficha1.getY()<=(posicionesY[j]+30) && ficha1.getY()>=(posicionesY[j]-30))  ){ 
                                     System.out.println("CORRER 12"+posicionesX[j+1]);
                                     x=posicionesX[j+1];
                                     y=(posicionesY[j+1]);
@@ -185,38 +185,51 @@ public class Contador extends Thread {
        
     }
 
-    private void validarPosiciones() {
-        if((ficha1.getX()==ficha2.getX()) && (ficha1.getY()==ficha2.getY()) ){
+      private void validarPosiciones() {
+        if(((ficha1.getX()==ficha2.getX()) && (ficha1.getY()==ficha2.getY())) || ((ficha1.getX()==ficha3.getX()) && (ficha1.getY()==ficha3.getY())) || ((ficha1.getX()==ficha4.getX()) && (ficha1.getY()==ficha4.getY()))){
+                 System.out.println("ESTAN EN LA MISMA POSICION");
             if((ficha1.getY()>=0 && ficha1.getY()<=210) || (ficha1.getY()>=470)){
-                ficha1.setLocation((ficha1.getX()+15), ficha1.getY());
+                ficha1.setLocation((ficha1.getX()+9), ficha1.getY());
             }else{
-                ficha1.setLocation((ficha1.getX()), ficha1.getY()+15);
+                ficha1.setLocation((ficha1.getX()), ficha1.getY()+9);
             }
         }
-    
-        if(((ficha1.getX()<=(ficha3.getX()+20)) && (ficha1.getX()>=(ficha3.getX()+20))) && ((ficha1.getY()<=(ficha3.getY()+20)) || (ficha1.getY()>=(ficha3.getY()+20))) ){
-           if(jugador==2){
-               ficha3.setLocation(110, 90);
-               parques.bandera3=0;
-               parques.bandera4=0;
-           }else{
-               ficha3.setLocation(560, 80);
-               parques.bandera=0;
-               parques.bandera2=0;
-               
+         
+        System.out.println("Es mayor que "+(ficha4.getX()-14)+"Es menor que "+(ficha4.getX()+14)+"Posicion"+ficha1.getX());
+        for(int i=0;i<posicionSX.length;i++){
+                System.out.println("Es mayor que "+(ficha4.getX()-14)+"Es menor que "+(ficha4.getX()+14)+"Posicion"+ficha1.getX());
+             if((ficha1.getX()<=(posicionSX[i]+20) && ficha1.getX()>=(posicionSX[i]-20)) && (ficha1.getY()<=(posicionSY[i]+20) && ficha1.getY()>=(posicionSY[i]-20))  ){
+                 System.out.println("Es maqwergtfyuiouytryor que "+(ficha4.getX()-14)+"Es menor que "+(ficha4.getX()+14)+"Posicion"+ficha1.getX());
+                 if(((ficha1.getX()<=(ficha4.getX()+20)) && (ficha1.getX()>=(ficha4.getX()-20))) && ((ficha1.getY()<=(ficha4.getY()+20)) && (ficha1.getY()>=(ficha4.getY()-20))) ){
+                     System.out.println("Entre 1FDFDF2");
+                   if(jugador==2){
+                        ficha4.setLocation(150, 50);
+                       parques.bandera3=0;
+                       parques.bandera4=0;
+                }else{
+                  ficha4.setLocation(560, 120);
+                  parques.bandera=0;
+                  parques.bandera2=0;
            }
         }
-        if(((ficha1.getX()<=(ficha4.getX()+20)) && (ficha1.getX()>=(ficha4.getX()+20))) && ((ficha1.getY()<=(ficha4.getY()+20)) || (ficha1.getX()>=(ficha4.getY()+20))) ){
-           if(jugador==2){
-               ficha4.setLocation(110, 60);
-               parques.bandera3=0;
-               parques.bandera4=0;
-           }else{
-              ficha4.setLocation(560, 120);
-              parques.bandera=0;
-              parques.bandera2=0;
-           }
+            System.out.println("Es mayor que "+(ficha3.getX()-14)+"Es menor que "+(ficha3.getX()+14)+"Posicion"+ficha1.getX());
+            if(((ficha1.getX()<=(ficha3.getX()+20)) && (ficha1.getX()>=(ficha3.getX()-20))) && ((ficha1.getY()<=(ficha3.getY()+20)) && (ficha1.getY()>=(ficha3.getY()-20))) ){
+               System.out.println("Entre rWEDFGRFTYer12");
+                if(jugador==2){
+
+                   ficha3.setLocation(150, 90);
+                   parques.bandera3=0;
+                   parques.bandera4=0;
+               }else{
+                   ficha3.setLocation(560, 80);
+                   parques.bandera=0;
+                   parques.bandera2=0;
+
+               }
+            }  
+            }
         }
+       
     }
 }
 

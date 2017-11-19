@@ -70,6 +70,7 @@ public class Parques1 extends javax.swing.JPanel{
     private void initComponents() {
 
         ficha2 = new javax.swing.JButton();
+        ficha5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jugadoren = new javax.swing.JLabel();
         ficha4 = new javax.swing.JButton();
@@ -98,6 +99,18 @@ public class Parques1 extends javax.swing.JPanel{
         add(ficha2);
         ficha2.setBounds(150, 50, 20, 20);
 
+        ficha5.setBackground(new java.awt.Color(0, 0, 153));
+        ficha5.setForeground(new java.awt.Color(0, 0, 153));
+        ficha5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha2.jpg"))); // NOI18N
+        ficha5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ficha5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha5ActionPerformed(evt);
+            }
+        });
+        add(ficha5);
+        ficha5.setBounds(370, 0, 20, 20);
+
         jLabel6.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("1");
@@ -121,7 +134,7 @@ public class Parques1 extends javax.swing.JPanel{
             }
         });
         add(ficha4);
-        ficha4.setBounds(560, 120, 20, 20);
+        ficha4.setBounds(540, 120, 20, 20);
 
         ficha3.setBackground(new java.awt.Color(0, 204, 0));
         ficha3.setForeground(new java.awt.Color(0, 204, 0));
@@ -133,7 +146,7 @@ public class Parques1 extends javax.swing.JPanel{
             }
         });
         add(ficha3);
-        ficha3.setBounds(560, 80, 20, 19);
+        ficha3.setBounds(540, 80, 20, 19);
 
         ficha1.setBackground(new java.awt.Color(0, 0, 153));
         ficha1.setForeground(new java.awt.Color(0, 0, 153));
@@ -396,8 +409,16 @@ public class Parques1 extends javax.swing.JPanel{
          }
     }//GEN-LAST:event_ficha4ActionPerformed
 
+    private void ficha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ficha5ActionPerformed
+
 public void turnos(){
- 
+      if(((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205))&&((ficha2.getX()>5&&ficha2.getX()<205)&&(ficha2.getY()>5&&ficha2.getY()<205)) ){
+                bandera=0;
+                bandera2=0;
+        }
+      
     if(turno==1){
    
    lanzar.addActionListener(new ActionListener() {
@@ -431,6 +452,7 @@ public void turnos(){
     private javax.swing.JButton ficha2;
     private javax.swing.JButton ficha3;
     private javax.swing.JButton ficha4;
+    private javax.swing.JButton ficha5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -552,11 +574,11 @@ public void turnos(){
         int movimientos=0;
         int movficha1=0,movficha2=0,movficha3=0,movficha4=0;
         turno=2;
-        
+      
         System.out.println("X F1"+ficha1.getX()+"Y F1"+ficha1.getY());
-        System.out.println("X F2"+ficha2.getX()+"Y F2"+ficha2.getY());
+        System.out.println("X F2"+ficha2.getX()+"Y F2"+ficha2.getY()+"dfghjkljhg"+bandera2+"dsfd"+bandera);
         if(bandera2==0){
-            turno=1;
+  
         if(((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205))&&((ficha2.getX()>5&&ficha2.getX()<205)&&(ficha2.getY()>5&&ficha2.getY()<205)) ){
                 bandera++;
                 System.out.println("    TURNOS"+bandera);
@@ -604,11 +626,11 @@ public void turnos(){
             movficha2=0;
             for(int i=0;i<posX7.length;i++){
                    //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                if((ficha1.getX()<=(posX7[i]+20) && ficha1.getX()>=(posX7[i]-20)) && (ficha1.getY()<=(posY7[i]+20) && ficha1.getY()>=(posY7[i]-20))  ){
+                if((ficha1.getX()<=(posX7[i]+35) && ficha1.getX()>=(posX7[i]-35)) && (ficha1.getY()<=(posY7[i]+35) && ficha1.getY()>=(posY7[i]-35))  ){
                     movficha1++;
                     movimientos++;
                  }
-                 if((ficha2.getX()<=(posX7[i]+20)&&ficha2.getX()>=(posX7[i]-20)) && (ficha2.getY()<=(posY7[i]+20) && ficha2.getY()>=(posY7[i]-20))  ){
+                 if((ficha2.getX()<=(posX7[i]+35)&&ficha2.getX()>=(posX7[i]-35)) && (ficha2.getY()<=(posY7[i]+35) && ficha2.getY()>=(posY7[i]-35))  ){
                         movficha2++;
                         movimientos++;
                    
@@ -658,12 +680,12 @@ public void turnos(){
             turno=1;
             for(int i=0;i<posX5.length;i++){
                  //  System.out.println("ENTRO AQUI 1"+posX5[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                if((ficha1.getX()<=(posX5[i]+20) && ficha1.getX()>=(posX5[i]-20)) && (ficha1.getY()<=(posY5[i]+20) && ficha1.getY()>=(posY5[i]-20))  ){
+                if((ficha1.getX()<=(posX5[i]+35) && ficha1.getX()>=(posX5[i]-35)) && (ficha1.getY()<=(posY5[i]+35) && ficha1.getY()>=(posY5[i]-35))  ){
                      System.out.println("AQUI ESTOY 151111");
                         movficha1++;
                         movimientos++;
                  }
-                 if((ficha2.getX()<=(posX5[i]+20)&&ficha2.getX()>=(posX5[i]-20)) && (ficha2.getY()<=(posY5[i]+20) && ficha2.getY()>=(posY5[i]-20))  ){
+                 if((ficha2.getX()<=(posX5[i]+35)&&ficha2.getX()>=(posX5[i]-35)) && (ficha2.getY()<=(posY5[i]+35) && ficha2.getY()>=(posY5[i]-35))  ){
                          System.out.println("AQUI ESTOY 161111");
                         movficha2++;
                         movimientos++;
@@ -711,35 +733,35 @@ public void turnos(){
             turno=1;
         
              for(int i=0;i<11;i++){
-                    if((ficha1.getX()<=(posicionesX[1]+20) && ficha1.getX()>=(posicionesX[1]+20)) && (ficha1.getY()<=(posicionesY[1]+20) && ficha1.getY()>=(posicionesY[1]+20))  ){
+                    if((ficha1.getX()<=(posicionesX[1]+35) && ficha1.getX()>=(posicionesX[1]+35)) && (ficha1.getY()<=(posicionesY[1]+35) && ficha1.getY()>=(posicionesY[1]+35))  ){
                      movficha1++;
                      movimientos++;
                     }
-                     if((ficha1.getX()<=(posicionesX[4]+20) && ficha1.getX()>=(posicionesX[4]+20)) && (ficha1.getY()<=(posicionesY[4]+20) && ficha1.getY()>=(posicionesY[4]+20))  ){
+                     if((ficha1.getX()<=(posicionesX[4]+35) && ficha1.getX()>=(posicionesX[4]+35)) && (ficha1.getY()<=(posicionesY[4]+35) && ficha1.getY()>=(posicionesY[4]+35))  ){
                       movficha1++;
                       movimientos++; 
                     }
-                    if((ficha1.getX()<=(posicionesX[7]+20) && ficha1.getX()>=(posicionesX[7]+20)) && (ficha1.getY()<=(posicionesY[7]+20) && ficha1.getY()>=(posicionesY[7]+20))  ){
+                    if((ficha1.getX()<=(posicionesX[7]+35) && ficha1.getX()>=(posicionesX[7]+35)) && (ficha1.getY()<=(posicionesY[7]+35) && ficha1.getY()>=(posicionesY[7]+35))  ){
                         movficha1++;
                          movimientos++;
                     }
-                     if((ficha1.getX()<=(posicionesX[10]+20) && ficha1.getX()>=(posicionesX[10]+20)) && (ficha1.getY()<=(posicionesY[10]+20) && ficha1.getY()>=(posicionesY[10]+20))  ){
+                     if((ficha1.getX()<=(posicionesX[10]+35) && ficha1.getX()>=(posicionesX[10]+35)) && (ficha1.getY()<=(posicionesY[10]+35) && ficha1.getY()>=(posicionesY[10]+35))  ){
                        movficha1++;
                        movimientos++; 
                     }
-                     if((ficha2.getX()<=(posicionesX[1]+20) && ficha2.getX()>=(posicionesX[1]+20)) && (ficha2.getY()<=(posicionesY[1]+20) && ficha2.getY()>=(posicionesY[1]+20))  ){
+                     if((ficha2.getX()<=(posicionesX[1]+35) && ficha2.getX()>=(posicionesX[1]+35)) && (ficha2.getY()<=(posicionesY[1]+35) && ficha2.getY()>=(posicionesY[1]+35))  ){
                      movficha2++;
                      movimientos++;
                     }
-                     if((ficha2.getX()<=(posicionesX[4]+20) && ficha2.getX()>=(posicionesX[4]+20)) && (ficha2.getY()<=(posicionesY[4]+20) && ficha2.getY()>=(posicionesY[4]+20))  ){
+                     if((ficha2.getX()<=(posicionesX[4]+35) && ficha2.getX()>=(posicionesX[4]+35)) && (ficha2.getY()<=(posicionesY[4]+35) && ficha2.getY()>=(posicionesY[4]+35))  ){
                       movficha2++;
                       movimientos++; 
                     }
-                    if((ficha2.getX()<=(posicionesX[7]+20) && ficha2.getX()>=(posicionesX[7]+20)) && (ficha2.getY()<=(posicionesY[7]+20) && ficha2.getY()>=(posicionesY[7]+20))  ){
+                    if((ficha2.getX()<=(posicionesX[7]+35) && ficha2.getX()>=(posicionesX[7]+35)) && (ficha2.getY()<=(posicionesY[7]+35) && ficha2.getY()>=(posicionesY[7]+35))  ){
                         movficha2++;
                          movimientos++;
                     }
-                     if((ficha2.getX()<=(posicionesX[10]+20) && ficha2.getX()>=(posicionesX[10]+20)) && (ficha2.getY()<=(posicionesY[10]+20) && ficha2.getY()>=(posicionesY[10]+20))  ){
+                     if((ficha2.getX()<=(posicionesX[10]+35) && ficha2.getX()>=(posicionesX[10]+35)) && (ficha2.getY()<=(posicionesY[10]+35) && ficha2.getY()>=(posicionesY[10]+35))  ){
                        movficha2++;
                        movimientos++; 
                     }
@@ -788,35 +810,35 @@ public void turnos(){
              for(int i=0;i<posX5.length;i++){
                  
                     
-                   if((ficha1.getX()<=(posX5[0]+20) && ficha1.getX()>=(posX5[0]+20)) && (ficha1.getY()<=(posY5[0]+20) && ficha1.getY()>=(posY5[0]+20))  ){
+                   if((ficha1.getX()<=(posX5[0]+35) && ficha1.getX()>=(posX5[0]-35)) && (ficha1.getY()<=(posY5[0]+35) && ficha1.getY()>=(posY5[0]-35))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                    if((ficha1.getX()<=(posX5[2]+20) && ficha1.getX()>=(posX5[2]+20)) && (ficha1.getY()<=(posY5[2]+20) && ficha1.getY()>=(posY5[2]+20))  ){
+                    if((ficha1.getX()<=(posX5[2]+35) && ficha1.getX()>=(posX5[2]-35)) && (ficha1.getY()<=(posY5[2]+35) && ficha1.getY()>=(posY5[2]+35))  ){
                             movficha1++;
                              movimientos++;
                     }
-                     if((ficha1.getX()<=(posX5[4]+20) && ficha1.getX()>=(posX5[4]+20)) && (ficha1.getY()<=(posY5[4]+20) && ficha1.getY()>=(posY5[4]+20))  ){
+                     if((ficha1.getX()<=(posX5[4]+35) && ficha1.getX()>=(posX5[4]-35)) && (ficha1.getY()<=(posY5[4]+35) && ficha1.getY()>=(posY5[4]-35))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                    if((ficha1.getX()<=(posX5[6]+20) && ficha1.getX()>=(posX5[6]+20)) && (ficha1.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                    if((ficha1.getX()<=(posX5[6]+35) && ficha1.getX()>=(posX5[6]-35)) && (ficha1.getY()<=(posY5[6]+35) && ficha1.getY()>=(posY5[6]-35))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                      if((ficha2.getX()<=(posX5[0]+20) && ficha2.getX()>=(posX5[0]+20)) && (ficha2.getY()<=(posY5[0]+20) && ficha2.getY()>=(posY5[0]+20))  ){
+                      if((ficha2.getX()<=(posX5[0]+35) && ficha2.getX()>=(posX5[0]-35)) && (ficha2.getY()<=(posY5[0]+35) && ficha2.getY()>=(posY5[0]-35))  ){
                             movficha2++;
                             movimientos++;
                     }
-                      if((ficha2.getX()<=(posX5[2]+20) && ficha2.getX()>=(posX5[2]+20)) && (ficha2.getY()<=(posY5[2]+20) && ficha2.getY()>=(posY5[2]+20))){
+                      if((ficha2.getX()<=(posX5[2]+35) && ficha2.getX()>=(posX5[2]-35)) && (ficha2.getY()<=(posY5[2]+35) && ficha2.getY()>=(posY5[2]-35))){
                             movficha1++;
                             movimientos++; 
                     }
-                     if((ficha2.getX()<=(posX5[4]+20) && ficha2.getX()>=(posX5[4]+20)) && (ficha2.getY()<=(posY5[4]+20) && ficha2.getY()>=(posY5[4]+20))  ){
+                     if((ficha2.getX()<=(posX5[4]+35) && ficha2.getX()>=(posX5[4]-35)) && (ficha2.getY()<=(posY5[4]+35) && ficha2.getY()>=(posY5[4]-35))  ){
                             movficha1++;
                              movimientos++;
                     }
-                    if((ficha2.getX()<=(posX5[6]+20) && ficha2.getX()>=(posX5[6]+20)) && (ficha2.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                    if((ficha2.getX()<=(posX5[6]+35) && ficha2.getX()>=(posX5[6]-35)) && (ficha2.getY()<=(posY5[6]+35) && ficha1.getY()>=(posY5[6]-35))  ){
                         movficha1++;
                         movimientos++; 
                     }
@@ -883,9 +905,10 @@ public void turnos(){
         ficha2.setEnabled(false);
         ficha3.setEnabled(true);
         ficha4.setEnabled(true);
+        
         if(bandera4==0){
             turno=1;
-            turno=1;
+     
          if(((ficha3.getX()>430 &&ficha3.getX()<660)&&(ficha3.getY()>5&&ficha3.getY()<205)&&(ficha4.getX()>430 &&ficha4.getX()<660)&&(ficha4.getY()>5 && ficha4.getY()<205))){
              bandera3++;
              if(dado1==dado2){
@@ -909,7 +932,7 @@ public void turnos(){
                                 hilo16.start();
                            }                     
                          }
-         }
+                     }
                 if(bandera3<=3){
                   System.out.println("ESTOY AQUI AUN CVCVESPERANDO");
                   turno=2;
@@ -923,6 +946,7 @@ public void turnos(){
                     }
                     System.out.println("El turno de aqui quedo en"+turno);
         }else{  
+            turno=1;
                     if((dado1+dado2)==7){
                        movimientos=0;
                        movficha1=0;
@@ -930,11 +954,11 @@ public void turnos(){
                        turno=2;
                        for(int i=0;i<posX7.length;i++){
                               //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                           if((ficha3.getX()<=(posX7[i]+20) && ficha3.getX()>=(posX7[i]-20)) && (ficha3.getY()<=(posY7[i]+20) && ficha3.getY()>=(posY7[i]-20))  ){
+                           if((ficha3.getX()<=(posX7[i]+35) && ficha3.getX()>=(posX7[i]-35)) && (ficha3.getY()<=(posY7[i]+35) && ficha3.getY()>=(posY7[i]-35))  ){
                                movficha1++;
                                movimientos++;
                             }
-                            if((ficha4.getX()<=(posX7[i]+20)&&ficha4.getX()>=(posX7[i]-20)) && (ficha4.getY()<=(posY7[i]+20) && ficha4.getY()>=(posY7[i]-20))  ){
+                            if((ficha4.getX()<=(posX7[i]+35)&&ficha4.getX()>=(posX7[i]-35)) && (ficha4.getY()<=(posY7[i]+35) && ficha4.getY()>=(posY7[i]-35))  ){
                                    movficha2++;
                                    movimientos++;
 
@@ -985,12 +1009,12 @@ public void turnos(){
                        movimientos=0;
                        for(int i=0;i<posX5.length;i++){
                             //  System.out.println("ENTRO AQUI 1"+posX5[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                           if((ficha3.getX()<=(posX5[i]+20) && ficha3.getX()>=(posX5[i]-20)) && (ficha3.getY()<=(posY5[i]+20) && ficha3.getY()>=(posY5[i]-20))  ){
+                           if((ficha3.getX()<=(posX5[i]+35) && ficha3.getX()>=(posX5[i]-35)) && (ficha3.getY()<=(posY5[i]+35) && ficha3.getY()>=(posY5[i]-35))  ){
                                 System.out.println("AQUI ESTOY 151111-------");
                                movficha1++;
                                movimientos++;
                             }
-                            if((ficha4.getX()<=(posX5[i]+20)&&ficha4.getX()>=(posX5[i]-20)) && (ficha4.getY()<=(posY5[i]+20) && ficha4.getY()>=(posY5[i]-20))  ){
+                            if((ficha4.getX()<=(posX5[i]+35)&&ficha4.getX()>=(posX5[i]-35)) && (ficha4.getY()<=(posY5[i]+35) && ficha4.getY()>=(posY5[i]-35))  ){
                                    System.out.println("AQUI ESTOY 161111-------");
                                    movficha2++;
                                    movimientos++;
@@ -1037,35 +1061,35 @@ public void turnos(){
                        turno=2;
 
                         for(int i=0;i<11;i++){
-                               if((ficha3.getX()<=(posX5[0]+20) && ficha3.getX()>=(posX5[0]+20)) && (ficha3.getY()<=(posY5[0]+20) && ficha3.getY()>=(posY5[0]+20))  ){
+                               if((ficha3.getX()<=(posX5[0]+35) && ficha3.getX()>=(posX5[0]+35)) && (ficha3.getY()<=(posY5[0]+35) && ficha3.getY()>=(posY5[0]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                               if((ficha3.getX()<=(posX5[2]+20) && ficha3.getX()>=(posX5[2]+20)) && (ficha3.getY()<=(posY5[2]+20) && ficha3.getY()>=(posY5[2]+20))  ){
+                               if((ficha3.getX()<=(posX5[2]+35) && ficha3.getX()>=(posX5[2]+35)) && (ficha3.getY()<=(posY5[2]+35) && ficha3.getY()>=(posY5[2]+35))  ){
                                        movficha1++;
                                         movimientos++;
                                }
-                                if((ficha3.getX()<=(posX5[4]+20) && ficha3.getX()>=(posX5[4]+20)) && (ficha3.getY()<=(posY5[4]+20) && ficha3.getY()>=(posY5[4]+20))  ){
+                                if((ficha3.getX()<=(posX5[4]+35) && ficha3.getX()>=(posX5[4]+35)) && (ficha3.getY()<=(posY5[4]+35) && ficha3.getY()>=(posY5[4]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                               if((ficha3.getX()<=(posX5[6]+20) && ficha3.getX()>=(posX5[6]+20)) && (ficha3.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
+                               if((ficha3.getX()<=(posX5[6]+35) && ficha3.getX()>=(posX5[6]+35)) && (ficha3.getY()<=(posY5[6]+35) && ficha3.getY()>=(posY5[6]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                                 if((ficha4.getX()<=(posX5[0]+20) && ficha4.getX()>=(posX5[0]+20)) && (ficha4.getY()<=(posY5[0]+20) && ficha4.getY()>=(posY5[0]+20))  ){
+                                 if((ficha4.getX()<=(posX5[0]+35) && ficha4.getX()>=(posX5[0]+35)) && (ficha4.getY()<=(posY5[0]+35) && ficha4.getY()>=(posY5[0]+35))  ){
                                        movficha2++;
                                        movimientos++;
                                }
-                                 if((ficha4.getX()<=(posX5[2]+20) && ficha4.getX()>=(posX5[2]+20)) && (ficha4.getY()<=(posY5[2]+20) && ficha4.getY()>=(posY5[2]+20))){
+                                 if((ficha4.getX()<=(posX5[2]+35) && ficha4.getX()>=(posX5[2]+35)) && (ficha4.getY()<=(posY5[2]+35) && ficha4.getY()>=(posY5[2]+35))){
                                        movficha2++;
                                        movimientos++; 
                                }
-                                if((ficha4.getX()<=(posX5[4]+20) && ficha4.getX()>=(posX5[4]+20)) && (ficha4.getY()<=(posY5[4]+20) && ficha4.getY()>=(posY5[4]+20))  ){
+                                if((ficha4.getX()<=(posX5[4]+35) && ficha4.getX()>=(posX5[4]+35)) && (ficha4.getY()<=(posY5[4]+35) && ficha4.getY()>=(posY5[4]+35))  ){
                                        movficha2++;
                                         movimientos++;
                                }
-                               if((ficha4.getX()<=(posX5[6]+20) && ficha4.getX()>=(posX5[6]+20)) && (ficha4.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
+                               if((ficha4.getX()<=(posX5[6]+35) && ficha4.getX()>=(posX5[6]+35)) && (ficha4.getY()<=(posY5[6]+35) && ficha3.getY()>=(posY5[6]+35))  ){
                                    movficha2++;
                                    movimientos++; 
                                }
@@ -1108,40 +1132,40 @@ public void turnos(){
                        movficha1=0;
                        movficha2=0;
                        movimientos=0;
-                       turno=1;
+                       turno=2;
 
                         for(int i=0;i<posX5.length;i++){
 
 
-                               if((ficha3.getX()<=(posX5[0]+20) && ficha3.getX()>=(posX5[0]+20)) && (ficha3.getY()<=(posY5[0]+20) && ficha3.getY()>=(posY5[0]+20))  ){
+                               if((ficha3.getX()<=(posX5[0]+35) && ficha3.getX()>=(posX5[0]+35)) && (ficha3.getY()<=(posY5[0]+35) && ficha3.getY()>=(posY5[0]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                               if((ficha3.getX()<=(posX5[2]+20) && ficha3.getX()>=(posX5[2]+20)) && (ficha3.getY()<=(posY5[2]+20) && ficha3.getY()>=(posY5[2]+20))  ){
+                               if((ficha3.getX()<=(posX5[2]+35) && ficha3.getX()>=(posX5[2]+35)) && (ficha3.getY()<=(posY5[2]+35) && ficha3.getY()>=(posY5[2]+35))  ){
                                        movficha1++;
                                         movimientos++;
                                }
-                                if((ficha3.getX()<=(posX5[4]+20) && ficha3.getX()>=(posX5[4]+20)) && (ficha3.getY()<=(posY5[4]+20) && ficha3.getY()>=(posY5[4]+20))  ){
+                                if((ficha3.getX()<=(posX5[4]+35) && ficha3.getX()>=(posX5[4]+35)) && (ficha3.getY()<=(posY5[4]+35) && ficha3.getY()>=(posY5[4]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                               if((ficha3.getX()<=(posX5[6]+20) && ficha3.getX()>=(posX5[6]+20)) && (ficha3.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
+                               if((ficha3.getX()<=(posX5[6]+35) && ficha3.getX()>=(posX5[6]+35)) && (ficha3.getY()<=(posY5[6]+35) && ficha3.getY()>=(posY5[6]+35))  ){
                                        movficha1++;
                                        movimientos++; 
                                }
-                                 if((ficha4.getX()<=(posX5[0]+20) && ficha4.getX()>=(posX5[0]+20)) && (ficha4.getY()<=(posY5[0]+20) && ficha4.getY()>=(posY5[0]+20))  ){
+                                 if((ficha4.getX()<=(posX5[0]+35) && ficha4.getX()>=(posX5[0]+35)) && (ficha4.getY()<=(posY5[0]+35) && ficha4.getY()>=(posY5[0]+35))  ){
                                        movficha2++;
                                        movimientos++;
                                }
-                                 if((ficha4.getX()<=(posX5[2]+20) && ficha4.getX()>=(posX5[2]+20)) && (ficha4.getY()<=(posY5[2]+20) && ficha4.getY()>=(posY5[2]+20))){
+                                 if((ficha4.getX()<=(posX5[2]+35) && ficha4.getX()>=(posX5[2]+35)) && (ficha4.getY()<=(posY5[2]+35) && ficha4.getY()>=(posY5[2]+35))){
                                        movficha2++;
                                        movimientos++; 
                                }
-                                if((ficha4.getX()<=(posX5[4]+20) && ficha4.getX()>=(posX5[4]+20)) && (ficha4.getY()<=(posY5[4]+20) && ficha4.getY()>=(posY5[4]+20))  ){
+                                if((ficha4.getX()<=(posX5[4]+35) && ficha4.getX()>=(posX5[4]+35)) && (ficha4.getY()<=(posY5[4]+35) && ficha4.getY()>=(posY5[4]+35))  ){
                                        movficha2++;
                                         movimientos++;
                                }
-                               if((ficha4.getX()<=(posX5[6]+20) && ficha4.getX()>=(posX5[6]+20)) && (ficha4.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
+                               if((ficha4.getX()<=(posX5[6]+35) && ficha4.getX()>=(posX5[6]+35)) && (ficha4.getY()<=(posY5[6]+35) && ficha3.getY()>=(posY5[6]+35))  ){
                                    movficha2++;
                                    movimientos++; 
                                }
@@ -1186,7 +1210,8 @@ public void turnos(){
                         JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
                    }
         }
-    }
+    
         
 
+}
 }

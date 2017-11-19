@@ -187,14 +187,15 @@ public class Parques2 extends javax.swing.JPanel{
     private void ficha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha2ActionPerformed
       opciond1=String.valueOf(dado11);
       opciond2=String.valueOf(dado21);
-          suma=dado11+dado21;
+      suma=dado11+dado21;
+      System.out.println("la suma de fichas es"+suma+"Ddo1"+dado11);
         Object[] nuevo= new Object[] { opciond1, opciond2, "Todo" };
         Object[] options = null;
         String seleccion = (String) JOptionPane.showInputDialog(this, "Desea mover?",  "Selector de opciones",
         JOptionPane.QUESTION_MESSAGE, null,nuevo, "opcion 1");
         System.out.println("se"+seleccion);
         if(seleccion=="Todo"){
-                System.out.println("se12swdfgh12"+seleccion);
+                System.out.println("todo 1 0 "+seleccion);
                 if(hilo11!=null){
                     hilo11 = new Contador2(ficha2,suma,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
                     hilo11.start();
@@ -206,9 +207,10 @@ public class Parques2 extends javax.swing.JPanel{
      
         }else{
             if(seleccion==opciond1){
-                    System.out.println("se1wdefgrthyjugfre212"+seleccion);
+                
+                    System.out.println("todo 1 1"+seleccion);
                 if(hilo12!=null){
-                     hilo12 = new Contador2(ficha2,suma,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                     hilo12 = new Contador2(ficha2,dado11,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
                      hilo12.start();
 
                      }else{
@@ -223,6 +225,7 @@ public class Parques2 extends javax.swing.JPanel{
                         hilo13.start();
                    }
             }else{
+                System.out.println("Todo 1 3");
                 if(hilo3!=null){
                         System.out.println("sqwqwqwqwwqwqe1212"+seleccion);
                     hilo3 = new Contador2(ficha2,dado21,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
@@ -247,16 +250,17 @@ public class Parques2 extends javax.swing.JPanel{
     }//GEN-LAST:event_ficha2ActionPerformed
 
     private void ficha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha1ActionPerformed
-           opciond1=String.valueOf(dado11);
-           suma=dado11+dado21;
-      opciond2=String.valueOf(dado21);
+        opciond1=String.valueOf(dado11);
+        suma=dado11+dado21;     
+        opciond2=String.valueOf(dado21);
+         System.out.println("la suma de fichas es"+suma+"Ddo1"+dado11);
         Object[] nuevo= new Object[] { opciond1, opciond2, "Todo" };
         Object[] options = null;
         String seleccion = (String) JOptionPane.showInputDialog(this, "Desea mover?",  "Selector de opciones",
         JOptionPane.QUESTION_MESSAGE, null,nuevo, "opcion 1");
         System.out.println("se"+seleccion);
         if(seleccion=="Todo"){
-                 System.out.println("se1212"+seleccion);
+                 System.out.println("todo 2 -1"+seleccion);
                 if(hilo4!=null){
                      hilo4 = new Contador2(ficha1,suma,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
                      hilo4.start();
@@ -268,8 +272,9 @@ public class Parques2 extends javax.swing.JPanel{
      
         }else{
             if(seleccion==opciond1){
-                 System.out.println("se1212sdsd"+seleccion);
+                 System.out.println("todo 2 2"+seleccion);
                 if(hilo3!=null){
+                    
                        hilo3 = new Contador2(ficha1,dado11,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
                         hilo3.start();
 
@@ -285,6 +290,7 @@ public class Parques2 extends javax.swing.JPanel{
                         hilo7.start();
                    }
             }else{
+                System.out.println("Todo 2 3");
                  System.out.println("se12dsds12"+seleccion);
                 if(hilo3!=null){
                     hilo3 = new Contador2(ficha1,dado21,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
@@ -311,12 +317,15 @@ public class Parques2 extends javax.swing.JPanel{
     private void ficha3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha3ActionPerformed
       opciond1=String.valueOf(dado11);
       opciond2=String.valueOf(dado21);
-        Object[] nuevo= new Object[] { opciond1, opciond2, "Todo" };
+      suma=dado11+dado21;
+      System.out.println("la suma de fichas es"+suma+"Ddo1"+dado11);
+      Object[] nuevo= new Object[] { opciond1, opciond2, "Todo" };
         Object[] options = null;
         String seleccion = (String) JOptionPane.showInputDialog(this, "Desea mover?",  "Selector de opciones",
         JOptionPane.QUESTION_MESSAGE, null,nuevo, "opcion 1");
         System.out.println("se"+seleccion);
         if(seleccion=="Todo"){
+            System.out.println("Todo1 3");
                 if(hilo8!=null){
                     hilo8 = new Contador2(ficha3,suma,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                     hilo8.start();
@@ -328,6 +337,7 @@ public class Parques2 extends javax.swing.JPanel{
      
         }else{
             if(seleccion==opciond1){
+                System.out.println("Todo2 43");
                 if(hilo9!=null){
                     hilo9 = new Contador2(ficha3,dado11,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                     hilo9.start();
@@ -344,6 +354,7 @@ public class Parques2 extends javax.swing.JPanel{
                         hilo10.start();
                    }
             }else{
+                System.out.println("Todo3 3");
                 if(hilo3!=null){
                     hilo3 = new Contador2(ficha3,dado21,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                     hilo3.start();
@@ -368,13 +379,17 @@ public class Parques2 extends javax.swing.JPanel{
 
     private void ficha4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha4ActionPerformed
        opciond1=String.valueOf(dado11);
-      opciond2=String.valueOf(dado21);
+        opciond2=String.valueOf(dado21);
+        suma=dado11+dado21;
+         System.out.println("la suma de fichas es"+suma+"Ddo1"+dado11);
         Object[] nuevo= new Object[] { opciond1, opciond2, "Todo" };
         Object[] options = null;
         String seleccion = (String) JOptionPane.showInputDialog(this, "Desea mover?",  "Selector de opciones",
         JOptionPane.QUESTION_MESSAGE, null,nuevo, "opcion 1");
         System.out.println("se"+seleccion);
-        if(seleccion=="Todo"){
+        if(seleccion=="Todo"){  
+            
+            System.out.println("Todo 4");
                 if(hilo3!=null){
                     hilo3 = new Contador2(ficha4,suma,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
                     hilo3.start();
@@ -386,6 +401,7 @@ public class Parques2 extends javax.swing.JPanel{
      
         }else{
             if(seleccion==opciond1){
+                System.out.println("Todo1 4");
                 if(hilo3!=null){
                     hilo3 = new Contador2(ficha4,dado11,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
                     hilo3.start();
@@ -402,6 +418,7 @@ public class Parques2 extends javax.swing.JPanel{
                         hilo7.start();
                    }
             }else{
+                System.out.println("Todo2 4");
                 if(hilo3!=null){
                       hilo3 = new Contador2(ficha4,dado21,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
                        hilo3.start();
@@ -579,6 +596,7 @@ public void turnos(){
        int movimientos=0;
        int movficha1=0,movficha2=0,movficha3=0,movficha4=0;
        turno=2; 
+      if(((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205))&&((ficha2.getX()>5&&ficha2.getX()<205)&&(ficha2.getY()>5&&ficha2.getY()<205)) ){
         if(dado1==dado2 ){
                 turno=1;
                 System.out.println("AQUI ESTOY CUANDO ES PAR");
@@ -586,21 +604,21 @@ public void turnos(){
                     hilo1.reset();
 
                      }else{
-                        hilo1 = new Contador2(ficha1,1,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
+                        hilo1 = new Contador2(ficha1,0,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
                         hilo1.start();
                    }
                    if(hilo2!=null){
                        hilo2.reset();
                     }else{
-                        hilo2 = new Contador2(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                        hilo2 = new Contador2(ficha2,0,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
                         hilo2.start();
                    }
                   
                   
                 
-           
-           
         }
+           
+        
        
                  
         
@@ -609,7 +627,7 @@ public void turnos(){
         }
         
     }
-        
+    }  
        
         
 
@@ -621,8 +639,9 @@ public void turnos(){
         ficha2.setEnabled(false);
         ficha3.setEnabled(true);
         ficha4.setEnabled(true);
-     
-            turno=1;
+           turno=1;
+        if(((ficha3.getX()>430 &&ficha3.getX()<660)&&(ficha3.getY()>5&&ficha3.getY()<205)&&(ficha4.getX()>430 &&ficha4.getX()<660)&&(ficha4.getY()>5 && ficha4.getY()<205))){
+         
              if(dado1==dado2){
                  turno=2;
             
@@ -634,13 +653,13 @@ public void turnos(){
                             hilo5.reset();
 
                              }else{
-                            hilo5 = new Contador2(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                            hilo5 = new Contador2(ficha3,0,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                             hilo5.start();
                            }
                            if(hilo6!=null){
                                hilo6.reset();
                             }else{
-                                hilo6 = new Contador2(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
+                                hilo6 = new Contador2(ficha4,0,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
                                 hilo6.start();
                            }                     
                          }
@@ -650,6 +669,6 @@ public void turnos(){
              JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
         }
 }
-
+    }
   
 }

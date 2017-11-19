@@ -6,6 +6,7 @@
 package parques;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,10 +34,12 @@ public class Parques1 extends javax.swing.JPanel{
  
  int [] posX7={250,120,430,560};
  int [] posY7={130,440,560,250};
- int [] posX5={120,10,260,330,560,670,430,350};
- int [] posY5={260,350,560,670,440,340,130,18};
- int []posicionesX={270,120,10,120,260,340,430,560,670,560,420,340};
- int []posicionesY={130,260,350,440,560,670,560,420,340,250,130,18};
+ int [] posX5={120,10,250,330,560,670,440,340};
+ int [] posY5={250,350,560,670,430,340,110,0};
+ int []posicionesX={250,120,10,120,250,330,440,560,680,560,430,340};
+ int []auxiliar2={270,120,10,120,260,340,430,560,670,560,420,340};
+ int []posicionesY={110,240,350,430,550,670,560,420,330,250,110,0};
+ int []auxiliar1={110,260,350,440,560,670,560,420,340,260,110,0};;
  int [] posicionSX={0,240,550,440,260};
   int [] posicionSY={0,120,240,560,560};
  
@@ -67,6 +70,8 @@ public class Parques1 extends javax.swing.JPanel{
     private void initComponents() {
 
         ficha2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jugadoren = new javax.swing.JLabel();
         ficha4 = new javax.swing.JButton();
         ficha3 = new javax.swing.JButton();
         ficha1 = new javax.swing.JButton();
@@ -81,41 +86,74 @@ public class Parques1 extends javax.swing.JPanel{
 
         setLayout(null);
 
-        ficha2.setBackground(new java.awt.Color(255, 255, 0));
-        ficha2.setForeground(new java.awt.Color(255, 255, 0));
-        ficha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo1.png"))); // NOI18N
+        ficha2.setBackground(new java.awt.Color(0, 0, 153));
+        ficha2.setForeground(new java.awt.Color(0, 0, 153));
+        ficha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha2.jpg"))); // NOI18N
         ficha2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ficha2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha2ActionPerformed(evt);
+            }
+        });
         add(ficha2);
-        ficha2.setBounds(150, 120, 20, 20);
+        ficha2.setBounds(110, 60, 20, 20);
 
-        ficha4.setBackground(new java.awt.Color(204, 0, 0));
-        ficha4.setForeground(new java.awt.Color(204, 0, 0));
-        ficha4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/punto1.jpg"))); // NOI18N
-        ficha4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        jLabel6.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("1");
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51)));
+        add(jLabel6);
+        jLabel6.setBounds(900, 300, 20, 30);
+
+        jugadoren.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        jugadoren.setForeground(new java.awt.Color(255, 255, 255));
+        jugadoren.setText("JUGADOR EN JUEGO");
+        add(jugadoren);
+        jugadoren.setBounds(720, 310, 200, 22);
+
+        ficha4.setBackground(new java.awt.Color(51, 204, 0));
+        ficha4.setForeground(new java.awt.Color(51, 255, 0));
+        ficha4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha3.jpg"))); // NOI18N
+        ficha4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0)));
+        ficha4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha4ActionPerformed(evt);
+            }
+        });
         add(ficha4);
-        ficha4.setBounds(540, 140, 20, 20);
+        ficha4.setBounds(560, 120, 20, 20);
 
-        ficha3.setBackground(new java.awt.Color(204, 0, 0));
-        ficha3.setForeground(new java.awt.Color(204, 0, 0));
-        ficha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/punto1.jpg"))); // NOI18N
-        ficha3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        ficha3.setBackground(new java.awt.Color(0, 204, 0));
+        ficha3.setForeground(new java.awt.Color(0, 204, 0));
+        ficha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha3.jpg"))); // NOI18N
+        ficha3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0)));
+        ficha3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha3ActionPerformed(evt);
+            }
+        });
         add(ficha3);
-        ficha3.setBounds(540, 90, 20, 20);
+        ficha3.setBounds(560, 80, 20, 19);
 
-        ficha1.setBackground(new java.awt.Color(255, 255, 0));
-        ficha1.setForeground(new java.awt.Color(255, 255, 0));
-        ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo1.png"))); // NOI18N
+        ficha1.setBackground(new java.awt.Color(0, 0, 153));
+        ficha1.setForeground(new java.awt.Color(0, 0, 153));
+        ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha2.jpg"))); // NOI18N
         ficha1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ficha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha1ActionPerformed(evt);
+            }
+        });
         add(ficha1);
-        ficha1.setBounds(150, 90, 20, 20);
+        ficha1.setBounds(110, 90, 20, 20);
 
         jLabel5.setText("jLabel5");
         add(jLabel5);
         jLabel5.setBounds(260, 560, 10, 14);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/parque12.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/parque12121.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 710, 700);
+        jLabel1.setBounds(0, 0, 710, 690);
 
         lanzar.setBackground(new java.awt.Color(0, 102, 102));
         lanzar.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,13 +161,14 @@ public class Parques1 extends javax.swing.JPanel{
         add(lanzar);
         lanzar.setBounds(770, 130, 100, 30);
 
-        dado1.setText("jLabel5");
+        dado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dado-imagen-animada-0063.gif"))); // NOI18N
         add(dado1);
-        dado1.setBounds(730, 200, 70, 80);
+        dado1.setBounds(730, 200, 90, 90);
 
+        dado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dado-imagen-animada-0063.gif"))); // NOI18N
         dado2.setText("jLabel6");
         add(dado2);
-        dado2.setBounds(840, 200, 70, 80);
+        dado2.setBounds(840, 200, 80, 80);
 
         jLabel4.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,20 +188,210 @@ public class Parques1 extends javax.swing.JPanel{
         jLabel2.setBounds(-45, -3, 1050, 790);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ficha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha2ActionPerformed
+        ficha1.setEnabled(false);
+        System.out.println("SELECCIONO FICHA 2 -SDFGGFG----"+mover2);    
+              if(mover2==7){
+                   System.out.println("SELECCIONO FICHA 2 -----"+mover2);   
+                           if(hilo3!=null){
+                               hilo3 = new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1);
+                                hilo3.start();  
+                            }else{
+                               
+                                hilo3 = new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1);
+                                hilo3.start();   
+                                }
+                                
+                                
+                }
+            if(mover2==5){
+                if(hilo4!=null){
+                     System.out.println("SELECCIONO FICHA 2 ER-----"+mover2);   
+                             hilo4= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1,1);
+                             hilo4.start();
+                            }else{
+                            
+                                hilo4= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1,1);
+                                hilo4.start();        
+                               
+                           }
+             }
+            if(mover2==12)  {
+                    if(hilo21!=null){
+                         System.out.println("SELECCIONO FICHA 2 QWERT-----"+mover2);   
+                             hilo21= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1);
+                                hilo21.start();
+                            }else{
+                                System.out.println("SELECCIONO FnbvftyujnbvgftyICHA 2 QWERT-----"+mover2);   
+                                hilo21= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1);
+                                hilo21.start();
+                 
+                           }
+         }
+             if(mover2==10)  {
+                    if(hilo20!=null){
+                             hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                            }else{
+                            
+                                hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                 
+                           }
+         }
+    }//GEN-LAST:event_ficha2ActionPerformed
+
+    private void ficha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha1ActionPerformed
+          
+              ficha2.setEnabled(false);
+              System.out.println("SELECCIONO FICHA 1 -----"+mover2);    
+              if(mover2==7){
+                           if(hilo5!=null){
+                               hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo5.start();
+                            }else{
+                               
+                                hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo5.start();   
+                                }
+                                
+                                
+                }
+            if(mover2==5){
+                    if(hilo7!=null){
+                             hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo7.start();
+                            }else{
+                            
+                                hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo7.start();      
+                               
+                           }
+      }
+         if(mover2==12)  {
+                    if(hilo20!=null){
+                             hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                            }else{
+                            
+                                hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                 
+                           }
+         }
+          if(mover2==10)  {
+                    if(hilo20!=null){
+                             hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                            }else{
+                            
+                                hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo20.start();
+                 
+                           }
+         }
+    }//GEN-LAST:event_ficha1ActionPerformed
+
+    private void ficha3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha3ActionPerformed
+        ficha4.setEnabled(false); 
+        System.out.println("SELECCIONO FICHA 3 -----"+mover2);    
+           if(mover2==7){
+                       System.out.println("SELECCIONO FasdfgrfhyjuklICHA 3 -----"+mover2);    
+            if(hilo11!=null){
+                hilo11= new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2);
+                hilo11.start();
+            }else{
+
+                hilo11= new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2);
+                hilo11.start();
+
+            }
+        }
+        if(mover2==5){
+                System.out.println("SELECCIONOfdfddfdf FasdfgrfhyjuklICHA 3 -----"+mover2);    
+            if(hilo13!=null){
+                hilo13= new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4,2);
+                hilo13.start();
+            }else{
+
+                hilo13= new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4,2);
+                hilo13.start();
+
+            }
+        }
+        if(mover2==12)  {
+                System.out.println("SELECCIONO edgrthyuilkuyjtFasdfgrfhyjuklICHA 3 -----"+mover2);    
+                    if(hilo7!=null){
+                             hilo7= new Contador(ficha3,12,ficha3.getX(),ficha3.getY(),ficha4,2);
+                                hilo7.start();
+                            }else{
+                            
+                                hilo7= new  Contador(ficha3,12,ficha3.getX(),ficha3.getY(),ficha4,2);
+                                hilo7.start();
+                 
+                           }
+         }
+    }//GEN-LAST:event_ficha3ActionPerformed
+
+    private void ficha4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha4ActionPerformed
+        ficha3.setEnabled(false); 
+        System.out.println("SELECCIONO FICHA 4 -----"+mover2);    
+            if(mover2==7){
+                   System.out.println("SELertyuiytreCHA 3 -----"+mover2);    
+            if(hilo9!=null){
+                hilo9= new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3,2);
+                hilo9.start();
+            }else{
+
+                hilo9= new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3,2);
+                hilo9.start();
+
+            }
+        }
+        if(mover2==5){
+            System.out.println("dsfgrfhyjuklICHA 3 -----"+mover2);    
+            if(hilo10!=null){
+                hilo10= new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3,2);
+                hilo10.start();
+            }else{
+
+                hilo10= new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3,2);
+                hilo10.start();
+
+            }
+        } 
+        if(mover2==12)  {
+            System.out.println("ertyjuklICHA 3 -----"+mover2);    
+                    if(hilo22!=null){
+                             hilo22= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,2);
+                                hilo22.start();
+                            }else{
+                            
+                                hilo22= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,2);
+                                hilo22.start();
+                 
+                           }
+         }
+    }//GEN-LAST:event_ficha4ActionPerformed
+
 public void turnos(){
    if(turno==1){
+   
    lanzar.addActionListener(new ActionListener() {
                         @Override
   public void actionPerformed(ActionEvent e) {
       System.out.println("LANZAR 1");
-	lanzarDados(turno);
+	
+        lanzarDados(turno);
 			}
 		}
 		);}
    if(turno==2){
+               
        lanzar.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
+             
                 System.out.println("LANZAR 2");
                 lanzarDados(turno);
            }
@@ -184,6 +413,8 @@ public void turnos(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jugadoren;
     private javax.swing.JButton lanzar;
     // End of variables declaration//GEN-END:variables
 
@@ -290,11 +521,14 @@ public void turnos(){
     }
     
     private void movimientos(int dado1,int dado2,int jugador) {
-  
+        ficha3.setEnabled(false);
+        ficha4.setEnabled(false);
+        ficha1.setEnabled(true);
+        ficha2.setEnabled(true);
        int movimientos=0;
        int movficha1=0,movficha2=0,movficha3=0,movficha4=0;
         turno=2; 
-        if(dado1==dado2){
+        if(dado1==dado2 ){
                 turno=1;
                 System.out.println("AQUI ESTOY CUANDO ES PAR");
                 if(hilo1!=null){
@@ -470,6 +704,7 @@ public void turnos(){
                          moverfichas();
                      }else{
                          if(movficha1==0){
+                             System.out.println("AQUI ESTOY IICHA 1191111111 "+movficha2);
                              if(hilo17!=null){
                                 hilo17= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
                                 hilo17.start();
@@ -481,6 +716,7 @@ public void turnos(){
                            }
                          }else{
                              if(movficha2==0){
+                              System.out.println("AQUI ESTOY IICHA 2222191111111 "+movficha2);
                               if(hilo18!=null){
                                     hilo18= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1);                                  
                                     hilo18.start();
@@ -496,45 +732,90 @@ public void turnos(){
                      
              }
         
-        if(dado1==5 && dado2==5){
+        if((dado1==5 && dado2==5) ||(dado1+dado2==10)){
+            movficha1=0;
+            movficha2=0;
+            movimientos=0;
+            turno=1;
+        
              for(int i=0;i<posX5.length;i++){
-                     movficha1++;
-                     movimientos++;
-                    }
-                    if((ficha3.getX()<=(posX5[0]+20) && ficha3.getX()>=(posX5[0]+20)) && (ficha3.getY()<=(posY5[0]+20) && ficha3.getY()>=(posY5[0]+20))  ){
-                            movficha3++;
+                 
+                    
+                   if((ficha1.getX()<=(posX5[0]+20) && ficha1.getX()>=(posX5[0]+20)) && (ficha1.getY()<=(posY5[0]+20) && ficha1.getY()>=(posY5[0]+20))  ){
+                            movficha1++;
                             movimientos++; 
                     }
-                    if((ficha3.getX()<=(posX5[2]+20) && ficha3.getX()>=(posX5[2]+20)) && (ficha3.getY()<=(posY5[2]+20) && ficha3.getY()>=(posY5[2]+20))  ){
-                            movficha3++;
+                    if((ficha1.getX()<=(posX5[2]+20) && ficha1.getX()>=(posX5[2]+20)) && (ficha1.getY()<=(posY5[2]+20) && ficha1.getY()>=(posY5[2]+20))  ){
+                            movficha1++;
                              movimientos++;
                     }
-                     if((ficha3.getX()<=(posX5[4]+20) && ficha3.getX()>=(posX5[4]+20)) && (ficha3.getY()<=(posY5[4]+20) && ficha3.getY()>=(posY5[4]+20))  ){
-                            movficha3++;
+                     if((ficha1.getX()<=(posX5[4]+20) && ficha1.getX()>=(posX5[4]+20)) && (ficha1.getY()<=(posY5[4]+20) && ficha1.getY()>=(posY5[4]+20))  ){
+                            movficha1++;
                             movimientos++; 
                     }
-                    if((ficha3.getX()<=(posX5[6]+20) && ficha3.getX()>=(posX5[6]+20)) && (ficha3.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
-                            movficha3++;
+                    if((ficha1.getX()<=(posX5[6]+20) && ficha1.getX()>=(posX5[6]+20)) && (ficha1.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                            movficha1++;
                             movimientos++; 
                     }
-                      if((ficha4.getX()<=(posX5[0]+20) && ficha4.getX()>=(posX5[0]+20)) && (ficha4.getY()<=(posY5[0]+20) && ficha4.getY()>=(posY5[0]+20))  ){
-                            movficha4++;
+                      if((ficha2.getX()<=(posX5[0]+20) && ficha2.getX()>=(posX5[0]+20)) && (ficha2.getY()<=(posY5[0]+20) && ficha2.getY()>=(posY5[0]+20))  ){
+                            movficha2++;
                             movimientos++;
                     }
-                      if((ficha4.getX()<=(posX5[2]+20) && ficha4.getX()>=(posX5[2]+20)) && (ficha4.getY()<=(posY5[2]+20) && ficha4.getY()>=(posY5[2]+20))){
-                            movficha4++;
+                      if((ficha2.getX()<=(posX5[2]+20) && ficha2.getX()>=(posX5[2]+20)) && (ficha2.getY()<=(posY5[2]+20) && ficha2.getY()>=(posY5[2]+20))){
+                            movficha1++;
                             movimientos++; 
                     }
-                     if((ficha4.getX()<=(posX5[4]+20) && ficha4.getX()>=(posX5[4]+20)) && (ficha4.getY()<=(posY5[4]+20) && ficha4.getY()>=(posY5[4]+20))  ){
-                            movficha4++;
+                     if((ficha2.getX()<=(posX5[4]+20) && ficha2.getX()>=(posX5[4]+20)) && (ficha2.getY()<=(posY5[4]+20) && ficha2.getY()>=(posY5[4]+20))  ){
+                            movficha1++;
                              movimientos++;
                     }
-                    if((ficha4.getX()<=(posX5[6]+20) && ficha4.getX()>=(posX5[6]+20)) && (ficha4.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
-                        movficha4++;
+                    if((ficha2.getX()<=(posX5[6]+20) && ficha2.getX()>=(posX5[6]+20)) && (ficha2.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                        movficha1++;
                         movimientos++; 
                     }
+
         }
-         if(turno==2){
+             if(movimientos>=2){
+                    mover2=10;
+                     System.out.println("AQUI ESTOY 171111 "+movimientos);
+                    ficha1.setEnabled(true);
+                     ficha2.setEnabled(true); 
+                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
+                     moverfichas();
+              }else{
+                  if(movficha1==1){
+                       System.out.println("AQUI ESTOY 181111 " +movficha1);
+                      if(hilo7!=null){
+                                hilo7= new Contador(ficha1,10,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo7.start();
+                            }else{
+                                
+                                hilo7= new Contador(ficha1,10,ficha1.getX(),ficha1.getY(),ficha2,1);
+                                hilo7.start();
+    
+                           }
+                  }else{
+                      if(movficha2==1){
+                           System.out.println("AQUI ESTOY 191111 "+movficha2);
+                         if(hilo8!=null){
+                                hilo8= new Contador(ficha2,10,ficha2.getX(),ficha2.getY(),ficha1,1);                                  
+                                hilo8.start();
+                            }else{
+                           
+                                    hilo8= new Contador(ficha2,10,ficha2.getX(),ficha2.getY(),ficha1,1);                                  
+                                    hilo8.start();
+            
+                           }
+                      }
+                  }
+        
+             }
+        }
+      
+            
+                 
+        
+        if(turno==2){
              JOptionPane.showMessageDialog(this, "Turno del jugador 2", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -546,7 +827,11 @@ public void turnos(){
 
     private void movimientosj2(int dado1, int dado2, int jugador) {
         int movimientos=0;
-       int movficha1=0,movficha2=0;
+        int movficha1=0,movficha2=0;
+        ficha1.setEnabled(false);
+        ficha2.setEnabled(false);
+        ficha3.setEnabled(true);
+        ficha4.setEnabled(true);
      
             turno=1;
              if(dado1==dado2){
@@ -685,37 +970,37 @@ public void turnos(){
             turno=2;
         
              for(int i=0;i<11;i++){
-                    if((ficha3.getX()<=(posicionesX[1]+20) && ficha3.getX()>=(posicionesX[1]+20)) && (ficha3.getY()<=(posicionesY[1]+20) && ficha4.getY()>=(posicionesY[1]+20))  ){
-                     movficha1++;
-                     movimientos++;
+                    if((ficha3.getX()<=(posX5[0]+20) && ficha3.getX()>=(posX5[0]+20)) && (ficha3.getY()<=(posY5[0]+20) && ficha3.getY()>=(posY5[0]+20))  ){
+                            movficha1++;
+                            movimientos++; 
                     }
-                     if((ficha3.getX()<=(posicionesX[4]+20) && ficha3.getX()>=(posicionesX[4]+20)) && (ficha3.getY()<=(posicionesY[4]+20) && ficha4.getY()>=(posicionesY[4]+20))  ){
-                      movficha1++;
-                      movimientos++; 
+                    if((ficha3.getX()<=(posX5[2]+20) && ficha3.getX()>=(posX5[2]+20)) && (ficha3.getY()<=(posY5[2]+20) && ficha3.getY()>=(posY5[2]+20))  ){
+                            movficha1++;
+                             movimientos++;
                     }
-                    if((ficha3.getX()<=(posicionesX[7]+20) && ficha3.getX()>=(posicionesX[7]+20)) && (ficha3.getY()<=(posicionesY[7]+20) && ficha4.getY()>=(posicionesY[7]+20))  ){
-                        movficha1++;
-                         movimientos++;
+                     if((ficha3.getX()<=(posX5[4]+20) && ficha3.getX()>=(posX5[4]+20)) && (ficha3.getY()<=(posY5[4]+20) && ficha3.getY()>=(posY5[4]+20))  ){
+                            movficha1++;
+                            movimientos++; 
                     }
-                     if((ficha3.getX()<=(posicionesX[10]+20) && ficha3.getX()>=(posicionesX[10]+20)) && (ficha3.getY()<=(posicionesY[10]+20) && ficha4.getY()>=(posicionesY[10]+20))  ){
-                       movficha1++;
-                       movimientos++; 
+                    if((ficha3.getX()<=(posX5[6]+20) && ficha3.getX()>=(posX5[6]+20)) && (ficha3.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
+                            movficha1++;
+                            movimientos++; 
                     }
-                     if((ficha4.getX()<=(posicionesX[1]+20) && ficha4.getX()>=(posicionesX[1]+20)) && (ficha4.getY()<=(posicionesY[1]+20) && ficha3.getY()>=(posicionesY[1]+20))  ){
-                     movficha2++;
-                     movimientos++;
+                      if((ficha4.getX()<=(posX5[0]+20) && ficha4.getX()>=(posX5[0]+20)) && (ficha4.getY()<=(posY5[0]+20) && ficha4.getY()>=(posY5[0]+20))  ){
+                            movficha2++;
+                            movimientos++;
                     }
-                     if((ficha4.getX()<=(posicionesX[4]+20) && ficha4.getX()>=(posicionesX[4]+20)) && (ficha4.getY()<=(posicionesY[4]+20) && ficha3.getY()>=(posicionesY[4]+20))  ){
-                      movficha2++;
-                      movimientos++; 
+                      if((ficha4.getX()<=(posX5[2]+20) && ficha4.getX()>=(posX5[2]+20)) && (ficha4.getY()<=(posY5[2]+20) && ficha4.getY()>=(posY5[2]+20))){
+                            movficha2++;
+                            movimientos++; 
                     }
-                    if((ficha4.getX()<=(posicionesX[7]+20) && ficha4.getX()>=(posicionesX[7]+20)) && (ficha4.getY()<=(posicionesY[7]+20) && ficha3.getY()>=(posicionesY[7]+20))  ){
+                     if((ficha4.getX()<=(posX5[4]+20) && ficha4.getX()>=(posX5[4]+20)) && (ficha4.getY()<=(posY5[4]+20) && ficha4.getY()>=(posY5[4]+20))  ){
+                            movficha2++;
+                             movimientos++;
+                    }
+                    if((ficha4.getX()<=(posX5[6]+20) && ficha4.getX()>=(posX5[6]+20)) && (ficha4.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
                         movficha2++;
-                         movimientos++;
-                    }
-                     if((ficha4.getX()<=(posicionesX[10]+20) && ficha4.getX()>=(posicionesX[10]+20)) && (ficha4.getY()<=(posicionesY[10]+20) && ficha3.getY()>=(posicionesY[10]+20))  ){
-                       movficha2++;
-                       movimientos++; 
+                        movimientos++; 
                     }
              }
                      if(movimientos==0){
@@ -741,7 +1026,7 @@ public void turnos(){
                                     hilo18.start();
                                     }else{
 
-                                        hilo18= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,1);                                  
+                                        hilo18= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,2);                                  
                                         hilo18.start();
             
                            }
@@ -751,215 +1036,123 @@ public void turnos(){
                      
                
         }
-         if(dado1==5 && dado2==5){
+       
+        if((dado1==5 && dado2==5) ||(dado1+dado2==10)){
+            movficha1=0;
+            movficha2=0;
+            movimientos=0;
+            turno=1;
+        
              for(int i=0;i<posX5.length;i++){
-                     movficha1++;
-                     movimientos++;
-                    }
-                     if((ficha1.getX()<=(posX5[0]+20) && ficha1.getX()>=(posX5[0]+20)) && (ficha1.getY()<=(posY5[0]+20) && ficha1.getY()>=(posY5[0]+20))  ){
+                 
+                    
+                    if((ficha3.getX()<=(posX5[0]+20) && ficha3.getX()>=(posX5[0]+20)) && (ficha3.getY()<=(posY5[0]+20) && ficha3.getY()>=(posY5[0]+20))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                    if((ficha1.getX()<=(posX5[2]+20) && ficha1.getX()>=(posX5[2]+20)) && (ficha1.getY()<=(posY5[2]+20) && ficha1.getY()>=(posY5[2]+20))  ){
+                    if((ficha3.getX()<=(posX5[2]+20) && ficha3.getX()>=(posX5[2]+20)) && (ficha3.getY()<=(posY5[2]+20) && ficha3.getY()>=(posY5[2]+20))  ){
                             movficha1++;
                              movimientos++;
                     }
-                     if((ficha1.getX()<=(posX5[4]+20) && ficha1.getX()>=(posX5[4]+20)) && (ficha1.getY()<=(posY5[4]+20) && ficha1.getY()>=(posY5[4]+20))  ){
+                     if((ficha3.getX()<=(posX5[4]+20) && ficha3.getX()>=(posX5[4]+20)) && (ficha3.getY()<=(posY5[4]+20) && ficha3.getY()>=(posY5[4]+20))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                    if((ficha1.getX()<=(posX5[6]+20) && ficha1.getX()>=(posX5[6]+20)) && (ficha1.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                    if((ficha3.getX()<=(posX5[6]+20) && ficha3.getX()>=(posX5[6]+20)) && (ficha3.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
                             movficha1++;
                             movimientos++; 
                     }
-                      if((ficha2.getX()<=(posX5[0]+20) && ficha2.getX()>=(posX5[0]+20)) && (ficha2.getY()<=(posY5[0]+20) && ficha2.getY()>=(posY5[0]+20))  ){
+                      if((ficha4.getX()<=(posX5[0]+20) && ficha4.getX()>=(posX5[0]+20)) && (ficha4.getY()<=(posY5[0]+20) && ficha4.getY()>=(posY5[0]+20))  ){
                             movficha2++;
                             movimientos++;
                     }
-                      if((ficha2.getX()<=(posX5[2]+20) && ficha2.getX()>=(posX5[2]+20)) && (ficha2.getY()<=(posY5[2]+20) && ficha2.getY()>=(posY5[2]+20))){
+                      if((ficha4.getX()<=(posX5[2]+20) && ficha4.getX()>=(posX5[2]+20)) && (ficha4.getY()<=(posY5[2]+20) && ficha4.getY()>=(posY5[2]+20))){
                             movficha2++;
                             movimientos++; 
                     }
-                     if((ficha2.getX()<=(posX5[4]+20) && ficha2.getX()>=(posX5[4]+20)) && (ficha2.getY()<=(posY5[4]+20) && ficha2.getY()>=(posY5[4]+20))  ){
+                     if((ficha4.getX()<=(posX5[4]+20) && ficha4.getX()>=(posX5[4]+20)) && (ficha4.getY()<=(posY5[4]+20) && ficha4.getY()>=(posY5[4]+20))  ){
                             movficha2++;
                              movimientos++;
                     }
-                    if((ficha2.getX()<=(posX5[6]+20) && ficha2.getX()>=(posX5[6]+20)) && (ficha2.getY()<=(posY5[6]+20) && ficha1.getY()>=(posY5[6]+20))  ){
+                    if((ficha4.getX()<=(posX5[6]+20) && ficha4.getX()>=(posX5[6]+20)) && (ficha4.getY()<=(posY5[6]+20) && ficha3.getY()>=(posY5[6]+20))  ){
                         movficha2++;
                         movimientos++; 
                     }
+        }
+             if(movimientos>=2){
+                    mover2=10;
+                     System.out.println("AQUI ESTOY 171111 "+movimientos);
+                    ficha1.setEnabled(true);
+                     ficha2.setEnabled(true); 
+                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
+                     moverfichas2();
+              }else{
+                  if(movficha1==1){
+                       System.out.println("AQUI ESTOY 181111 " +movficha1);
+                      if(hilo7!=null){
+                                hilo7= new Contador(ficha3,10,ficha3.getX(),ficha3.getY(),ficha4,2);
+                                hilo7.start();
+                            }else{
+                                
+                                hilo7= new Contador(ficha3,10,ficha3.getX(),ficha3.getY(),ficha4,2);
+                                hilo7.start();
+    
+                           }
+                  }else{
+                      if(movficha2==1){
+                           System.out.println("AQUI ESTOY 191111 "+movficha2);
+                         if(hilo8!=null){
+                                hilo8= new Contador(ficha4,10,ficha4.getX(),ficha4.getY(),ficha3,2);                                  
+                                hilo8.start();
+                            }else{
+                           
+                                    hilo8= new Contador(ficha4,10,ficha4.getX(),ficha4.getY(),ficha3,2);                                  
+                                    hilo8.start();
+            
+                           }
+                      }
+                  }
+        
              }
+        }
      if(turno==1){
              JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
         }
 }
 
     private void moverfichas2() {
-       ficha3.addActionListener(new ActionListener() {
+        
+      
+      /* ficha3.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-            System.out.println("SELECCIONO FICHA 3 -----"+mover2);    
-               if(mover2==7){
-            if(hilo11!=null){
-                hilo11= new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2);
-                hilo11.start();
-            }else{
-
-                hilo11= new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2);
-                hilo11.start();
-
-            }
-        }
-        if(mover2==5){
-            if(hilo13!=null){
-                hilo13= new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4,2);
-                hilo13.start();
-            }else{
-
-                hilo13= new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4,2);
-                hilo13.start();
-
-            }
-        }
-        if(mover2==12)  {
-                    if(hilo7!=null){
-                             hilo7= new Contador(ficha3,12,ficha3.getX(),ficha3.getY(),ficha4,2);
-                                hilo7.start();
-                            }else{
-                            
-                                hilo7= new  Contador(ficha3,12,ficha3.getX(),ficha3.getY(),ficha4,2);
-                                hilo7.start();
-                 
-                           }
-         }
+           
            }
            
        });
        ficha4.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               System.out.println("SELECCIONO FICHA 4 -----"+mover2);    
-               if(mover2==7){
-            if(hilo9!=null){
-                hilo9= new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3,2);
-                hilo9.start();
-            }else{
-
-                hilo9= new Contador(ficha4,7,ficha4.getX(),ficha4.getY(),ficha3,2);
-                hilo9.start();
-
-            }
-        }
-        if(mover2==5){
-            if(hilo10!=null){
-                hilo10= new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3,2);
-                hilo10.start();
-            }else{
-
-                hilo10= new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3,2);
-                hilo10.start();
-
-            }
-        } 
-        if(mover2==12)  {
-                    if(hilo22!=null){
-                             hilo22= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,1);
-                                hilo22.start();
-                            }else{
-                            
-                                hilo22= new Contador(ficha4,12,ficha4.getX(),ficha4.getY(),ficha3,1);
-                                hilo22.start();
-                 
-                           }
-         }
+             
            }
            
-       });
+       });*/
     }
     
     
     
 
     private void moverfichas() {
-       ficha1.addActionListener(new ActionListener() {
+        
+      /* ficha1.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               System.out.println("SELECCIONO FICHA 1 -----"+mover2);    
-              if(mover2==7){
-                           if(hilo5!=null){
-                               hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo5.start();
-                            }else{
-                               
-                                hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo5.start();   
-                                }
-                                
-                                
-                }
-            if(mover2==5){
-                    if(hilo7!=null){
-                             hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo7.start();
-                            }else{
-                            
-                                hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo7.start();      
-                               
-                           }
-      }
-         if(mover2==12)  {
-                    if(hilo20!=null){
-                             hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo20.start();
-                            }else{
-                            
-                                hilo20= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1);
-                                hilo20.start();
-                 
-                           }
-         }
+             
            }});
       ficha2.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               System.out.println("SELECCIONO FICHA 2 -----"+mover2);    
-              if(mover2==7){
-                           if(hilo3!=null){
-                               hilo3 = new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1);
-                                hilo3.start();  
-                            }else{
-                               
-                                hilo3 = new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1);
-                                hilo3.start();   
-                                }
-                                
-                                
-                }
-            if(mover2==5){
-                if(hilo4!=null){
-                             hilo4= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1,1);
-                             hilo4.start();
-                            }else{
-                            
-                                hilo4= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1,1);
-                                hilo4.start();        
-                               
-                           }
-             }
-            if(mover2==12)  {
-                    if(hilo21!=null){
-                             hilo21= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1);
-                                hilo21.start();
-                            }else{
-                            
-                                hilo21= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1);
-                                hilo21.start();
-                 
-                           }
-         }
-           
-           
-       }});
+              
+           }});*/
     }
 }

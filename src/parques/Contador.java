@@ -21,10 +21,9 @@ public class Contador extends Thread {
  int [] posY7={130,440,560,260};
  int [] posX5={120,10,270,330,560,670,430,350};
  int [] posY5={260,350,560,670,440,340,130,18};
- int []posicionesX={270,120,10,120,260,340,430,560,670,560,420,340};
- int []auxiliar2={270,120,10,120,260,340,430,560,670,560,420,340};
- int []posicionesY={130,260,350,440,560,670,560,420,340,260,130,18};
- int []auxiliar1={130,260,350,440,560,670,560,420,340,260,130,18};;
+
+  int []auxiliar2={250,120,10,120,250,330,440,560,680,560,430,340};
+ int []auxiliar1={110,240,350,430,550,670,560,420,330,250,110,0};
  int [] posicionSX={0,250,540,440,260};
  int [] posicionSY={0,120,240,560,560};
  JButton ficha1,ficha2;
@@ -47,6 +46,8 @@ public class Contador extends Thread {
     }
     
     public void run(){
+ int []posicionesX={250,120,10,120,250,330,440,560,680,560,430,340};
+ int []posicionesY={110,240,350,430,550,670,560,420,330,250,110,0};
      if(jugador==2){
          
           for(int x=0;x<=11;x++){
@@ -61,7 +62,9 @@ public class Contador extends Thread {
          }
         
      }
+      System.out.println(posicionesX[0]);
         switch(mover){
+            
              case 1:{
                  System.out.println("SALIR DE BLOQUEO");
                   int bandera=0,posicion=0;
@@ -102,158 +105,72 @@ public class Contador extends Thread {
                  break;
              }
            case 7:{ 
+               System.out.println("CORRER 12 AQUI ESTA LRETYHJYGRFERA FICHA"+ficha1.getX());
                System.out.println("CORRER 7");
+               
                  for( j=0;j<posicionesX.length;j++){
-                    
-                if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){  
-                    auxiliar=i;
-                    System.out.println("CORRER  7    POSIUCION -----------"+j);
-                  for(int i=0;i<posX7.length;i++){              
-                  //  System.out.println(ficha2.getX()+"--"+posicionesX[i]+"---"+posicionesY[i]+"--"+ficha2.getY());
-                   if((ficha1.getX()<=(posX7[i]+20) && ficha1.getX()>=(posX7[i]-20)) && (ficha1.getY()<=(posY7[i]+20) && ficha1.getY()>=(posY7[i]-20))  ){
-                       System.out.println("AQUI ESTOY 12");
-                       if(i==0||i==2){
-                           System.out.println("AQUI ESTOY 13");
-                        if(ficha2.getY()<=(posicionesY[j+1]+20) && ficha2.getY()>=(posicionesY[j+1]-20)){
-                            System.out.println("AQUI ESTOY 14");
-                           
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]+10);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            i++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 15");
-                            if(j==posicionesX.length){
-                                j=-1;
-                            }
-                       
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            i++;
-                              break;
-                     }
-                    }
-                     else{
-                           if(ficha2.getX()<=(posicionesX[j+1]+20) && ficha2.getX()>=(posicionesX[j+1]-20)){
-                            System.out.println("AQUI ESTOY 16");
-                           
-                         
-                            x=(posicionesX[j+1]+10);
-                            y=posicionesY[j+1];
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            i++;
-                            break;
-                        }else{
-                            System.out.println("AQUI ESTOY 17");
-                           
-                            x=posicionesX[j+1];
-                            y=(posicionesY[j+1]);
-                            ficha1.setLocation(x, y);
-                             System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                            j++;
-                            i++;
-                            break;
-                            
-                     }
-                     }
-                  }
-                }
-                }
-              }
-                break;  
+                     if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                                    System.out.println("CORRER 12"+posicionesX[j+1]);
+                                    x=posicionesX[j+1];
+                                    y=(posicionesY[j+1]);
+                                    ficha1.setLocation(x, y); 
+                                    break;
+                 }
+              
           }
-          
+                   break;  
+           }
           
            case 5:{
-               System.out.println("CORRER 5");
-               System.out.println("ENTRE A FICHA 5-----------------");
-            
+                 System.out.println("CORRER 5"); 
+                 System.out.println("CORRER 12 AQUI ESTA LA FICHA"+ficha1.getX());
+                 
                  for(j=0;j<posicionesX.length;j++){
-                        if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
-                             System.out.println("CORRER  7    POSIUCION -----------"+j);
-                          for(int i=0;i<posX5.length;i++){
-                      
-                           if((ficha1.getX()<=(posX5[i]+20) && ficha1.getX()>=(posX5[i]-20)) && (ficha1.getY()<=(posY5[i]+20) && ficha1.getY()>=(posY5[i]-20))  ){
-                               System.out.println("AQUI ESTOY 121");
-                               if(i==0||i==1 || i==4 || i==5){
-                                   System.out.println("AQUI ESTOY 131");
-                                if(ficha2.getY()<=(posicionesY[j+1]+20) && ficha2.getY()>=(posicionesY[j+1]-20)){
-                                    System.out.println("AQUI ESTOY 141");                                    
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]+10);
-                                    ficha1.setLocation(x, y);
-                                    j++;
-                                    i++;
-                                    System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                    break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 151");
-                                     if(j==posicionesX.length || j==posicionesY.length){
-                                        j=-1;
-                                    }
+                       if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                                    System.out.println("CORRER 12"+posicionesX[j+1]);
                                     x=posicionesX[j+1];
                                     y=(posicionesY[j+1]);
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     i++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                      break;
-                             }
-                            }
-                             else{
-                                 
-                                   if(ficha2.getX()<=(posicionesX[j+1]+20) && ficha2.getX()>=(posicionesX[j+1]-20)){
-                                    System.out.println("AQUI ESTOY 161");
-                                    
-                                    x=(posicionesX[j+1]+10);
-                                    y=posicionesY[j+1];
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     i++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
+                                    ficha1.setLocation(x, y); 
                                     break;
-                                }else{
-                                    System.out.println("AQUI ESTOY 171");
-                                   
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]);
-                                    ficha1.setLocation(x, y);
-                                     j++;
-                                     i++;
-                                     System.out.println(ficha1.getX()+"--"+ficha1.getY());
-                                    break;
-
-                             }
-                             
-                                      
-                                      
-                                  }
-                          }
-                        }
-                        }}
-                       break;  
+                 }
+              
+          }
+                   break;  
+           
            }
            case 12:{
+                 System.out.println("CORRER 12");
+                   System.out.println("CORRER 12 AQUI ESWEWEWEWA LA FICHA"+ficha1.getX());
                 for(j=0;j<posicionesX.length;j++){
+                    
                         if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                                    System.out.println("CORRER 12"+posicionesX[j+2]);
                                     x=posicionesX[j+2];
                                     y=(posicionesY[j+2]);
                                     ficha1.setLocation(x, y); 
+                                    break;
                         }
-           }}
+           }
+           break;}
+           case 10:{
+                System.out.println("CORRER 12");
+                   System.out.println("CORRER 12 AQUI ESWEWEWEWA LA FICHA"+ficha1.getX());
+                for(j=0;j<posicionesX.length;j++){
+                    
+                        if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                                    System.out.println("CORRER 12"+posicionesX[j+2]);
+                                    x=posicionesX[j+2];
+                                    y=(posicionesY[j+2]);
+                                    ficha1.setLocation(x, y); 
+                                    break;
+                        }
+           }
+                break;}
         }
-     
+         
         }
         
-    
+
     
     public void reset(){
         this.mover=0;

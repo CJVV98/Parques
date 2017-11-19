@@ -133,6 +133,7 @@ public class Iniciars extends javax.swing.JPanel {
         add(panel1,BorderLayout.CENTER);
         revalidate();
         repaint();
+          
         }else{
              JOptionPane.showMessageDialog(this, "Verifique los datos", "Error", JOptionPane.ERROR_MESSAGE);
         }

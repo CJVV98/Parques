@@ -25,7 +25,7 @@ public class Repositorio {
     public static void crear (Persona persona) {
         
         try {
-            String query = "INSERT INTO jugador (cedula, nombre,apellido, fechanac, edad, foto,contrasena, fecharegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            String query = "INSERT INTO jugador (cedula, nombre,apellido, fechanac, edad, foto,contrasena,categoria, fecharegistro) VALUES (?, ?, ?, ?, ?, ?, ?,?, ?);";
             //Colocar esos interrogantes l
             PreparedStatement sentenciaP = database.open().prepareStatement(query);
             sentenciaP.setInt(1, persona.getCedula());
@@ -35,7 +35,8 @@ public class Repositorio {
             sentenciaP.setInt(5, persona.getEdad());
             sentenciaP.setString(6, persona.getFoto());
             sentenciaP.setString(7, persona.getContrasena());
-            sentenciaP.setTimestamp(8, persona.getFecharegistro());
+            sentenciaP.setString(8, persona.getCategoria());
+            sentenciaP.setTimestamp(9, persona.getFecharegistro());
             sentenciaP.executeUpdate();
             sentenciaP.close();
             database.close();
@@ -64,7 +65,7 @@ public class Repositorio {
             ResultSet resultado = sentenciaP.executeQuery();
 
             while (resultado.next()) {
-                return Persona.crear(resultado.getInt("id"), resultado.getInt("cedula"), resultado.getInt("edad"), resultado.getString("nombre"), resultado.getString("apellido"), resultado.getDate("fechanac"),  resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena"));
+                return Persona.crear(resultado.getInt("id"), resultado.getInt("cedula"), resultado.getInt("edad"), resultado.getString("nombre"), resultado.getString("apellido"), resultado.getDate("fechanac"),  resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena"),resultado.getString("categoria"));
             }
             
             sentenciaP.close();
@@ -143,7 +144,7 @@ public class Repositorio {
             while (resultado.next()) {
                 //t id, int cedula, int edad, String nombre, String apellido, String tipo,Date fechanac, Timestamp fecharegistro)
                 personas.add(Persona.crear(resultado.getInt("id"),resultado.getInt("cedula"),resultado.getInt("edad"),resultado.getString("nombre"),resultado.getString("apellido"),
-                        resultado.getDate("fechanac"),resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena")));
+                        resultado.getDate("fechanac"),resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena"),resultado.getString("categoria")));
             }
 
             sentenciaP.close();

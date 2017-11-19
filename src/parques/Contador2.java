@@ -15,27 +15,26 @@ import parques.Parques1;
  *
  * @author STEVEN
  */
-public class Contador extends Thread {
+public class Contador2 extends Thread {
    Parques1 parques=new Parques1();
 
-
-  int []auxiliar2={250,120,10,120,250,330,440,560,680,560,430,340};
- int []auxiliar1={110,240,350,430,550,670,560,440,330,260,110,0};//Y
- int [] posicionSX={0,250,550,440,260};
- int [] posicionSY={0,110,250,560,560};
+  int []auxiliar2={240,260,260,240,210,190,150,120,90,60,30,10,10,10,30,60,90,120,150,180,220,240,260,270,260,260,260,260,260,340,410,410,410,410,410,410,420,440,460,490,530,560,590,620,650,680,680,680,650,620,590,560,530,500,460,440,420,400,420,410,410,410,400,370,260,250,250,250};
+ int []auxiliar1={110,140,180,210,230,250,260,270,280,280,270,270,330,440,440,440,440,440,420,420,430,460,490,530,560,590,610,640,670,670,670,640,610,580,550,520,490,460,430,410,400,400,400,400,400,400,330,250,230,230,230,260,260,260,240,210,180,150,120,90,60,30,0,0,0,30,60,90};
+ int [] posicionSX={0,250,540,440,260};
+ int [] posicionSY={0,120,240,560,560};
  JButton ficha1,ficha2,ficha3,ficha4;
  int mover;
  int j=0,auxiliar=11;
  int i=0;
  int x,y,jugador;
- int s=9;
+ int s=20;
 
     
-    Contador(JButton _label, int _mover, int x1,int y1,JButton _label2, int jugador1,JButton ficha3,JButton ficha4){
+    Contador2(JButton _label, int _mover, int x1,int y1,JButton _label2, int jugador1,JButton _label3,JButton _label4){
         this.ficha1=_label;
         this.ficha2=_label2;
-        this.ficha3=ficha3;
-        this.ficha4=ficha4;
+        this.ficha3=_label3;
+        this.ficha4=_label4;
         this.jugador=jugador1;
         this.mover=_mover;
         this.x=x1;
@@ -45,13 +44,14 @@ public class Contador extends Thread {
     }
     
     public void run(){
- int []posicionesX={250,120,10,120,250,330,440,560,680,560,430,340};
- int []posicionesY={110,240,350,430,550,670,560,420,330,250,110,0};
+        int vo=0;
+ int []posicionesX={240,260,260,240,210,190,150,120,90,60,30,10,10,10,30,60,90,120,150,180,220,240,260,270,260,260,260,260,260,340,410,410,410,410,410,410,420,440,460,490,530,560,590,620,650,680,680,680,650,620,590,560,530,500,460,440,420,400,420,410,410,410,400,370,260,250,250,250};
+ int []posicionesY={110,140,180,210,230,250,260,270,280,280,270,270,330,440,440,440,440,440,420,420,430,460,490,530,560,590,610,640,670,670,670,640,610,580,550,520,490,460,430,410,400,400,400,400,400,400,330,250,230,230,230,260,260,260,240,210,180,150,120,90,60,30,0,0,0,30,60,90};
      if(jugador==2){
          
-          for(int x=0;x<=11;x++){
+          for(int x=0;x<=67;x++){
               
-             if(s==12){
+             if(s==68){
                  s=0;
              } 
              posicionesX[x]=auxiliar2[s];
@@ -95,84 +95,81 @@ public class Contador extends Thread {
 
                            }
                        }
-                       validarPosiciones();
-                       
+
+
                     } catch (InterruptedException ex) {
                      Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
-
+                        
                     }
+                    validarPosiciones();
                  break;
              }
-           case 7:{ 
+           case  7:
+           case  8:
+           case  9:
+           case  10:
+           case  11:
+           case  12:{ 
+               vo=0;
+                System.out.println("PRIMER CASO");
                System.out.println("CORRER 12 AQUI ESTA LRETYHJYGRFERA FICHA"+ficha1.getX());
                System.out.println("CORRER 7");
-               
+               try{
                  for( j=0;j<posicionesX.length;j++){
                      if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
-                                    System.out.println("CORRER 12"+posicionesX[j+1]);
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]);
+                                    do{                                       
+                                   Thread.sleep(90);                 
+                                    System.out.println("CORRERewrgthyui 12"+posicionesX[j+1]+vo+"mover"+mover);
+                                    x=posicionesX[j+vo];
+                                    y=(posicionesY[j+vo]);
                                     ficha1.setLocation(x, y); 
-                                    validarPosiciones();
-                                     
+                                    vo++;
+                                    }while(vo<=mover);
+                                  
                                     break;
                  }
               
           }
-              
+                } catch (InterruptedException ex) {
+                     Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
+                validarPosiciones();
                    break;  
            }
           
-           case 5:{
+           case 5:
+           case 2:
+           case 3:
+           case 4:
+           case 6:{
+               vo=0;
+                 System.out.println("PRIMER CASO");
                  System.out.println("CORRER 5"); 
                  System.out.println("CORRER 12 AQUI ESTA LA FICHA"+ficha1.getX());
-                 
+                 try{
                  for(j=0;j<posicionesX.length;j++){
-                       if((ficha1.getX()<=(posicionesX[j]+30) && ficha1.getX()>=(posicionesX[j]-30)) && (ficha1.getY()<=(posicionesY[j]+30) && ficha1.getY()>=(posicionesY[j]-30))  ){ 
-                                    System.out.println("CORRER 12"+posicionesX[j+1]);
-                                    x=posicionesX[j+1];
-                                    y=(posicionesY[j+1]);
+                       if((ficha1.getX()<=(posicionesX[j]+20) && ficha1.getX()>=(posicionesX[j]-20)) && (ficha1.getY()<=(posicionesY[j]+20) && ficha1.getY()>=(posicionesY[j]-20))  ){ 
+                                    do{
+                                    Thread.sleep(90);                                                         
+                                    System.out.println("COewrgthyhuRRsdER 12"+posicionesX[j+1]);
+                                    x=posicionesX[j+vo];
+                                    y=(posicionesY[j+vo]);
                                     ficha1.setLocation(x, y); 
-                                    validarPosiciones();
+                                    vo++;
+                                    }while(vo<=mover);
                                     break;
                  }
-                       
-                } 
-                
+                 }
+          
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
                    break;  
            
            }
-           case 12:{
-                 System.out.println("CORRER 12");
-                   System.out.println("CORRER 12 AQUI ESWEWEWEWA LA FICHA"+ficha1.getX());
-                for(j=0;j<posicionesX.length;j++){
-                    
-                        if((ficha1.getX()<=(posicionesX[j]+30) && ficha1.getX()>=(posicionesX[j]-30)) && (ficha1.getY()<=(posicionesY[j]+30) && ficha1.getY()>=(posicionesY[j]-30))  ){ 
-                                    System.out.println("CORRER 12"+posicionesX[j+2]);
-                                    x=posicionesX[j+2];
-                                    y=(posicionesY[j+2]);
-                                    ficha1.setLocation(x, y); 
-                                    validarPosiciones();
-                                    break;
-                        }
-           }
-           break;}
-           case 10:{
-                System.out.println("CORRER 12");
-                   System.out.println("CORRER 12 AQUI ESWEWEWEWA LA FICHA"+ficha1.getX());
-                for(j=0;j<posicionesX.length;j++){
-                    
-                        if((ficha1.getX()<=(posicionesX[j]+30) && ficha1.getX()>=(posicionesX[j]-30)) && (ficha1.getY()<=(posicionesY[j]+30) && ficha1.getY()>=(posicionesY[j]-30))  ){ 
-                                    System.out.println("CORRER 12"+posicionesX[j+2]);
-                                    x=posicionesX[j+2];
-                                    y=(posicionesY[j+2]);
-                                    ficha1.setLocation(x, y); 
-                                    validarPosiciones();
-                                    break;
-                        }
-           }
-                
-                break;}
+          
         }
          
         }
@@ -184,8 +181,7 @@ public class Contador extends Thread {
         this.j=0;
        
     }
-
-    private void validarPosiciones() {
+     private void validarPosiciones() {
         if((ficha1.getX()==ficha2.getX()) && (ficha1.getY()==ficha2.getY()) ){
             if((ficha1.getY()>=0 && ficha1.getY()<=210) || (ficha1.getY()>=470)){
                 ficha1.setLocation((ficha1.getX()+15), ficha1.getY());
@@ -219,5 +215,3 @@ public class Contador extends Thread {
         }
     }
 }
-
-    

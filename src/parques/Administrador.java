@@ -31,8 +31,6 @@ public class Administrador extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablapersonas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -53,23 +51,6 @@ public class Administrador extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(3, 76, 115));
         jPanel1.setLayout(null);
-
-        tablapersonas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tablapersonas);
-
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(50, 130, 600, 500);
-
         add(jPanel1);
         jPanel1.setBounds(268, 0, 910, 870);
 
@@ -117,7 +98,5 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablapersonas;
     // End of variables declaration//GEN-END:variables
 }

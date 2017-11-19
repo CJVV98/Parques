@@ -237,6 +237,7 @@ public class Panel1 extends javax.swing.JPanel {
  */
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
       int error=0;
+      String categoria = null;
       Date parsed=null;
       java.sql.Date fecha1 = null;
      SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy"); 
@@ -284,7 +285,18 @@ public class Panel1 extends javax.swing.JPanel {
         }
         System.out.println(bandera);
         if (bandera != 1 && bandera != 2) {
-            persona = Persona.crear(0, Integer.parseInt(cedula_txt.getText()), Integer.parseInt(edad_txt.getText()), nombre_txt.getText(), apellido_txt.getText(), fecha1, ahora12,foto,contrasena_txt.getText());
+            if(Integer.parseInt(edad_txt.getText())>=5 && Integer.parseInt(edad_txt.getText())<=15){
+                categoria="infantil";
+            }else{
+                if(Integer.parseInt(edad_txt.getText())>=16 && Integer.parseInt(edad_txt.getText())<=24){
+                    categoria="juvenil";
+            }else{
+                    if(Integer.parseInt(edad_txt.getText())>=25 && Integer.parseInt(edad_txt.getText())<=50){
+                        categoria="mayores";
+            }
+                }
+            }
+            persona = Persona.crear(0, Integer.parseInt(cedula_txt.getText()), Integer.parseInt(edad_txt.getText()), nombre_txt.getText(), apellido_txt.getText(), fecha1, ahora12,foto,contrasena_txt.getText(),categoria);
             Repositorio.crear(persona);
 
             JOptionPane.showMessageDialog(this, "Jugador Creado", "Bien", JOptionPane.INFORMATION_MESSAGE);

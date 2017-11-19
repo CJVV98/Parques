@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 public class Persona {
     private int id,cedula,edad;
-    private String nombre, apellido,foto,contrasena;
+    private String nombre, apellido,foto,contrasena,categoria;
     private Date fechanac;
     private Timestamp fecharegistro;
 
@@ -30,7 +30,7 @@ public class Persona {
  * @param fechanac
  * @param fecharegistro 
  */
-    public Persona(int id, int cedula, int edad, String nombre, String apellido, Date fechanac, Timestamp fecharegistro, String foto, String contrasena) {
+    public Persona(int id, int cedula, int edad, String nombre, String apellido, Date fechanac, Timestamp fecharegistro, String foto, String contrasena, String _categoria) {
         this.id = id;
         this.cedula = cedula;
         this.edad = edad;
@@ -40,6 +40,15 @@ public class Persona {
         this.fecharegistro = fecharegistro;
         this.contrasena=contrasena;
         this.foto=foto;
+        this.categoria=_categoria;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getFoto() {
@@ -132,8 +141,8 @@ public class Persona {
    * @param fecharegistro
    * @return 
    */
-     public static Persona crear(int id, int cedula, int edad, String nombre, String apellido,Date fechanac, Timestamp fecharegistro, String foto, String contrasena) {
-        return new Persona(id,cedula,edad,nombre,apellido,fechanac,fecharegistro,foto,contrasena );
+     public static Persona crear(int id, int cedula, int edad, String nombre, String apellido,Date fechanac, Timestamp fecharegistro, String foto, String contrasena, String categoria) {
+        return new Persona(id,cedula,edad,nombre,apellido,fechanac,fecharegistro,foto,contrasena,categoria );
     }
 
 }

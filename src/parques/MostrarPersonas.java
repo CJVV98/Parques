@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MostrarPersonas extends javax.swing.JPanel {
    Panel1 per = new Panel1();
+   DefaultTableModel table_model_personas;
     /**
      * Creates new form MostrarPersonas
      */
@@ -33,6 +34,9 @@ public class MostrarPersonas extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablapersonas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        buscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(3, 76, 115));
 
@@ -53,30 +57,86 @@ public class MostrarPersonas extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("DATOS DE JUGADORES");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ORDENAR POR CATEGORIA");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar ", "Infantil", "Juvenil", "Mayores" }));
+
+        buscar.setBackground(new java.awt.Color(0, 51, 51));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("BUSCAR");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                .addGap(130, 130, 130))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(buscar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(buscar))
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+      String categoria=(String) jComboBox1.getSelectedItem();
+      System.out.println(categoria);
+      if(categoria=="Juvenil"){
+       tablapersonas.setModel(table_model_personas);    
+       per.setTableModel(table_model_personas);
+       per.refreshTableModel();
+       
+      }else{
+          if(categoria=="Mayores"){
+              
+          }
+          else{
+              if(categoria=="Infantil"){
+              
+          }
+          }
+      }
+      
+    }//GEN-LAST:event_buscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablapersonas;
     // End of variables declaration//GEN-END:variables
@@ -84,19 +144,20 @@ public class MostrarPersonas extends javax.swing.JPanel {
   * Método que agrega las columnas correspondientes a la tabla personass
   */
     private void configComponentes() {
-         DefaultTableModel table_model_personas = new DefaultTableModel();
+        String categoria;
+        table_model_personas = new DefaultTableModel();
         table_model_personas.addColumn("Cédula");
         table_model_personas.addColumn("Nombre");
         table_model_personas.addColumn("Apellido");
         table_model_personas.addColumn("Fecha Nacimiento");
         table_model_personas.addColumn("Edad");
-    
-        
-        tablapersonas.setModel(table_model_personas);
-        
-        per.setTableModel(table_model_personas);
-        per.refreshTableModel();
+         tablapersonas.setModel(table_model_personas);    
+         per.setTableModel(table_model_personas);
+         per.refreshTableModel();
+        }
+                //" \"Seleccionar \", \"Infantil\", \"Juvenil\", \"Mayores\"")
+       
     }
 
 
-}
+

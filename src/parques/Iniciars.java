@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author johan
  */
 public class Iniciars extends javax.swing.JPanel {
-
+ String juego1;
     /**
      * Creates new form Iniciars
      */
@@ -30,6 +30,8 @@ public class Iniciars extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
+        juego = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,8 +43,19 @@ public class Iniciars extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setLayout(null);
+
+        jLabel9.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Opcion de Juego");
+        add(jLabel9);
+        jLabel9.setBounds(170, 400, 200, 39);
+
+        juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piedra en piedra", "Uno en uno" }));
+        add(juego);
+        juego.setBounds(360, 410, 200, 30);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,7 +79,7 @@ public class Iniciars extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(170, 300, 116, 39);
         add(cedula_txt);
-        cedula_txt.setBounds(340, 300, 203, 30);
+        cedula_txt.setBounds(340, 300, 220, 30);
 
         jButton1.setBackground(new java.awt.Color(51, 102, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,15 +90,15 @@ public class Iniciars extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(320, 400, 120, 31);
+        jButton1.setBounds(310, 460, 120, 31);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Aun no estas registrado");
         add(jLabel4);
-        jLabel4.setBounds(170, 460, 165, 17);
+        jLabel4.setBounds(170, 520, 165, 17);
         add(contrasena_txt);
-        contrasena_txt.setBounds(340, 350, 200, 30);
+        contrasena_txt.setBounds(340, 350, 220, 30);
 
         jButton2.setBackground(new java.awt.Color(102, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,7 +109,7 @@ public class Iniciars extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(440, 460, 130, 30);
+        jButton2.setBounds(440, 520, 130, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -106,6 +119,12 @@ public class Iniciars extends javax.swing.JPanel {
         jLabel6.setText("jLabel6");
         add(jLabel6);
         jLabel6.setBounds(140, 70, 70, 70);
+
+        jLabel8.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Contraseña");
+        add(jLabel8);
+        jLabel8.setBounds(170, 340, 116, 39);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -124,16 +143,31 @@ public class Iniciars extends javax.swing.JPanel {
         int cedula=Integer.parseInt(cedula_txt.getText());
         System.out.println("Contraseña"+contrasena_txt.getText());
         if(Repositorio.validaruser(cedula, contrasena_txt.getText())==1){
-        System.out.println("AUI ESTOY");
-        Parques1 panel1=new Parques1();       
-        panel1.setSize(1000, 686);
-        panel1.setLocation(0, 0);
-        panel1.turnos();
-        removeAll();
-        add(panel1,BorderLayout.CENTER);
-        revalidate();
-        repaint();
-          
+            juego1=(String) juego.getSelectedItem();
+            System.out.println(juego);
+           if(juego1=="Piedra en piedra"){
+            System.out.println("AUI ESTOY");
+            Parques1 panel1=new Parques1();       
+            panel1.setSize(1000, 686);
+            panel1.setLocation(0, 0);
+            panel1.turnos();
+            removeAll();
+            add(panel1,BorderLayout.CENTER);
+            revalidate();
+            repaint();
+           }else{
+               if(juego1=="Uno en uno"){
+                  
+                     Parques2 panel1=new Parques2();       
+                     panel1.setSize(1000, 686);
+                     panel1.setLocation(0, 0);
+                     panel1.turnos();
+                     removeAll();
+                     add(panel1,BorderLayout.CENTER);
+                     revalidate();
+                     repaint(); 
+           }
+           }
         }else{
              JOptionPane.showMessageDialog(this, "Verifique los datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -152,5 +186,8 @@ public class Iniciars extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> juego;
     // End of variables declaration//GEN-END:variables
 }

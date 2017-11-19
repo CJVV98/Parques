@@ -6,6 +6,7 @@
 package parques;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
@@ -20,6 +21,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        this.setTitle("PARQUES");
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/circulo1.png"));
+        setIconImage(icon);
         this.setResizable(false);
     }
 

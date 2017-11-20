@@ -47,7 +47,25 @@ public class Repositorio {
 
     }
     
+    public static void historialJuegos (Jugador jugador) {
+        
+        try {
+            String query = "INSERT INTO jugador (cedula,puntos, fechar) VALUES (?, ?, ?);";
+            //Colocar esos interrogantes l
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setInt(1, jugador.getCedula());
+            sentenciaP.setInt(2, jugador.getPuntos());
+            sentenciaP.setTimestamp(3, jugador.getFecharegistro());
+            
+            sentenciaP.executeUpdate();
+            sentenciaP.close();
+            database.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
+    }
 
  
  
@@ -133,20 +151,33 @@ public class Repositorio {
        }
     }
        
-       public static ArrayList<Persona> obtenerTodos() {
+       public static ArrayList<Persona> obtenerTodos(String categoria) {
         ArrayList<Persona> personas = new ArrayList<Persona>();
 
         try {
             String query = "SELECT * FROM jugador;";
             PreparedStatement sentenciaP = database.open().prepareStatement(query);
             ResultSet resultado = sentenciaP.executeQuery();
-
+      
+            if(categoria=="Todos"){    
             while (resultado.next()) {
-                //t id, int cedula, int edad, String nombre, String apellido, String tipo,Date fechanac, Timestamp fecharegistro)
-                personas.add(Persona.crear(resultado.getInt("id"),resultado.getInt("cedula"),resultado.getInt("edad"),resultado.getString("nombre"),resultado.getString("apellido"),
+                 personas.add(Persona.crear(resultado.getInt("id"),resultado.getInt("cedula"),resultado.getInt("edad"),resultado.getString("nombre"),resultado.getString("apellido"),
                         resultado.getDate("fechanac"),resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena"),resultado.getString("categoria")));
+                }
+            }else{
+              
+            
+                
+               while (resultado.next()) {
+                 String categoriaB=resultado.getString("categoria");
+                 if(categoria.equals(categoriaB)){
+                 personas.add(Persona.crear(resultado.getInt("id"),resultado.getInt("cedula"),resultado.getInt("edad"),resultado.getString("nombre"),resultado.getString("apellido"),
+                        resultado.getDate("fechanac"),resultado.getTimestamp("fecharegistro"),resultado.getString("foto"),resultado.getString("contrasena"),resultado.getString("categoria")));
+                }
+               }
+            
             }
-
+           
             sentenciaP.close();
             database.close();
 

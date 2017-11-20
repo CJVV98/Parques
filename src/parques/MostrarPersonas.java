@@ -60,7 +60,7 @@ public class MostrarPersonas extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ORDENAR POR CATEGORIA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar ", "Infantil", "Juvenil", "Mayores" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar ", "infantil", "juvenil", "mayores" }));
 
         buscar.setBackground(new java.awt.Color(0, 51, 51));
         buscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,18 +113,23 @@ public class MostrarPersonas extends javax.swing.JPanel {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
       String categoria=(String) jComboBox1.getSelectedItem();
       System.out.println(categoria);
-      if(categoria=="Juvenil"){
+      if(categoria=="juvenil"){
        tablapersonas.setModel(table_model_personas);    
        per.setTableModel(table_model_personas);
-       per.refreshTableModel();
+       per.refreshTableModel(categoria);
        
       }else{
-          if(categoria=="Mayores"){
-              
+          if(categoria=="mayores"){
+             
+             tablapersonas.setModel(table_model_personas);    
+             per.setTableModel(table_model_personas);
+             per.refreshTableModel(categoria);  
           }
           else{
-              if(categoria=="Infantil"){
-              
+              if(categoria=="infantil"){
+               tablapersonas.setModel(table_model_personas);    
+               per.setTableModel(table_model_personas);
+               per.refreshTableModel(categoria);
           }
           }
       }
@@ -153,7 +158,7 @@ public class MostrarPersonas extends javax.swing.JPanel {
         table_model_personas.addColumn("Edad");
          tablapersonas.setModel(table_model_personas);    
          per.setTableModel(table_model_personas);
-         per.refreshTableModel();
+         per.refreshTableModel("Todos");
         }
                 //" \"Seleccionar \", \"Infantil\", \"Juvenil\", \"Mayores\"")
        

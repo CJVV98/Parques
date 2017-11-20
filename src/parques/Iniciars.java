@@ -6,6 +6,8 @@
 package parques;
 
 import java.awt.BorderLayout;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class Iniciars extends javax.swing.JPanel {
  String juego1;
+ private Timestamp ahora12;
+ int cedula;
     /**
      * Creates new form Iniciars
      */
@@ -140,14 +144,16 @@ public class Iniciars extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int cedula=Integer.parseInt(cedula_txt.getText());
+        cedula=Integer.parseInt(cedula_txt.getText());
         System.out.println("Contraseña"+contrasena_txt.getText());
         if(Repositorio.validaruser(cedula, contrasena_txt.getText())==1){
             juego1=(String) juego.getSelectedItem();
             System.out.println(juego);
            if(juego1=="Piedra en piedra"){
+            
             System.out.println("AUI ESTOY");
-            Parques1 panel1=new Parques1();       
+            Parques1 panel1=new Parques1();   
+            panel1.obtenerCedula(cedula);
             panel1.setSize(1000, 686);
             panel1.setLocation(0, 0);
             panel1.turnos();

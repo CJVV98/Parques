@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -24,7 +26,7 @@ import javax.swing.event.AncestorListener;
  */
 public class Parques1 extends javax.swing.JPanel{
  int recorrido=0;
- int jugador=1;
+ int jugador=1,cedula,puntos;
  
  int x=90,y=90,x1=90,y1=110,turno=1;
  int mover2=0;
@@ -50,9 +52,10 @@ public class Parques1 extends javax.swing.JPanel{
      */
     public Parques1() {
         initComponents();
-        
-        
-                         
+                            
+    }
+    public void obtenerCedula(int cedu){
+        this.cedula=cedu;
     }
     public void paint(Graphics sd){
         super.paint(sd);
@@ -70,11 +73,10 @@ public class Parques1 extends javax.swing.JPanel{
     private void initComponents() {
 
         ficha2 = new javax.swing.JButton();
-        ficha5 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jugadoren = new javax.swing.JLabel();
         ficha4 = new javax.swing.JButton();
         ficha3 = new javax.swing.JButton();
+        jugadoren1 = new javax.swing.JLabel();
         ficha1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,30 +101,11 @@ public class Parques1 extends javax.swing.JPanel{
         add(ficha2);
         ficha2.setBounds(150, 50, 20, 20);
 
-        ficha5.setBackground(new java.awt.Color(0, 0, 153));
-        ficha5.setForeground(new java.awt.Color(0, 0, 153));
-        ficha5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ficha2.jpg"))); // NOI18N
-        ficha5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ficha5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ficha5ActionPerformed(evt);
-            }
-        });
-        add(ficha5);
-        ficha5.setBounds(370, 0, 20, 20);
-
-        jLabel6.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("1");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51)));
-        add(jLabel6);
-        jLabel6.setBounds(900, 300, 20, 30);
-
         jugadoren.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jugadoren.setForeground(new java.awt.Color(255, 255, 255));
-        jugadoren.setText("JUGADOR EN JUEGO");
+        jugadoren.setText("FICHAS DEL JUGADO 2");
         add(jugadoren);
-        jugadoren.setBounds(720, 310, 200, 22);
+        jugadoren.setBounds(720, 400, 200, 22);
 
         ficha4.setBackground(new java.awt.Color(51, 204, 0));
         ficha4.setForeground(new java.awt.Color(51, 255, 0));
@@ -147,6 +130,12 @@ public class Parques1 extends javax.swing.JPanel{
         });
         add(ficha3);
         ficha3.setBounds(540, 80, 20, 19);
+
+        jugadoren1.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        jugadoren1.setForeground(new java.awt.Color(255, 255, 255));
+        jugadoren1.setText("FICHAS DEL JUGADO 1 ");
+        add(jugadoren1);
+        jugadoren1.setBounds(720, 310, 200, 22);
 
         ficha1.setBackground(new java.awt.Color(0, 0, 153));
         ficha1.setForeground(new java.awt.Color(0, 0, 153));
@@ -409,11 +398,8 @@ public class Parques1 extends javax.swing.JPanel{
          }
     }//GEN-LAST:event_ficha4ActionPerformed
 
-    private void ficha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ficha5ActionPerformed
-
 public void turnos(){
+  
       if(((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205))&&((ficha2.getX()>5&&ficha2.getX()<205)&&(ficha2.getY()>5&&ficha2.getY()<205)) ){
                 bandera=0;
                 bandera2=0;
@@ -452,14 +438,13 @@ public void turnos(){
     private javax.swing.JButton ficha2;
     private javax.swing.JButton ficha3;
     private javax.swing.JButton ficha4;
-    private javax.swing.JButton ficha5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jugadoren;
+    private javax.swing.JLabel jugadoren1;
     private javax.swing.JButton lanzar;
     // End of variables declaration//GEN-END:variables
 
@@ -566,7 +551,15 @@ public void turnos(){
     }
     
     private void movimientos(int dado1,int dado2,int jugador) {
+        if(ficha1.getX()==750 && ficha1.getY()==360 && ficha2.getX()==810 && ficha2.getY()==360){
+            LocalDateTime ahora = LocalDateTime.now();
+            Timestamp ahora12 = Timestamp.valueOf(ahora); 
+            Jugador jugador1 = Jugador.crear(0,cedula,ahora12,puntos);
+            Repositorio.historialJuegos(jugador1);
+           
+        }
         System.out.println("JUGADOR1");
+        int salir1=0;
         ficha3.setEnabled(false);
         ficha4.setEnabled(false);
         ficha1.setEnabled(true);
@@ -595,7 +588,7 @@ public void turnos(){
                            hilo1.start();
                    }
                    if(hilo2!=null){
-                         hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                            hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
                             hilo2.start();
                         }else{
                             hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
@@ -617,67 +610,99 @@ public void turnos(){
            }
            System.out.println("El turno de aqui quedo en"+turno);
         }else{   
-              System.out.println("Entre aqui nos  eporque?");
-           turno=2;
+            System.out.println("Entre aqui nos  eporque?");
+            turno=2;
+            if(dado1==dado2 ){
+                    salir1=1;
+                    if(((ficha1.getX()>5&&ficha1.getX()<205)&&(ficha1.getY()>5&&ficha1.getY()<205))){  
+                        if(hilo1!=null){
+                          hilo2 = new Contador(ficha1,1,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
+                           hilo2.start();
+
+                        }else{
+                           hilo1 = new Contador(ficha1,1,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
+                           hilo1.start();
+                   }
+                    }
+                    if(((ficha2.getX()>5&&ficha2.getX()<205)&&(ficha2.getY()>5&&ficha2.getY()<205))){
+                         if(hilo2!=null){
+                         hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                            hilo2.start();
+                        }else{
+                            hilo2 = new Contador(ficha2,1,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                            hilo2.start();
+                       }
+                    }
+                 }
             if((dado1+dado2)==7){
-            turno=1;
+            turno=2;
             movimientos=0;
             movficha1=0;
             movficha2=0;
-            for(int i=0;i<posX7.length;i++){
-                   //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                if((ficha1.getX()<=(posX7[i]+35) && ficha1.getX()>=(posX7[i]-35)) && (ficha1.getY()<=(posY7[i]+35) && ficha1.getY()>=(posY7[i]-35))  ){
-                    movficha1++;
-                    movimientos++;
-                 }
-                 if((ficha2.getX()<=(posX7[i]+35)&&ficha2.getX()>=(posX7[i]-35)) && (ficha2.getY()<=(posY7[i]+35) && ficha2.getY()>=(posY7[i]-35))  ){
-                        movficha2++;
-                        movimientos++;
-                   
-                }
-            }
-              if(movimientos>=2){
-                    mover2=7;
-                    System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");                 
-                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
-                
-              }else{
-                  if(movficha1==1){
-                       System.out.println("MOVER LA FICHA 1 ----++++++ 7");  
-                      if(hilo5!=null){
-                              hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
-                                hilo5.start();
-                            }else{
-                             
-                                hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
-                                hilo5.start();
-                            
-                                }
-                                
-                                
-                           }
-                  else{
-                      if(movficha2==1){
-                          System.out.println("MOVER LA FICHA 22 ----++++++ 7");  
-                          if(hilo6!=null){
-                               hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
-                               hilo6.start();
-                            }else{
-                             
-                                        hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
-                                        hilo6.start();
-                                
-                                
+            if(ficha1.getX()>=310 && ficha1.getX()<=370 && ficha1.getY()>=0 && ficha1.getY()<=10){
+                ficha1.setLocation(750, 360);
+            }else{
+                if(ficha2.getX()>=310 && ficha2.getX()<=370 && ficha2.getY()>=0 && ficha2.getY()<=10){
+                 ficha2.setLocation(810, 360);
+                }else{
+                    for(int i=0;i<posX7.length;i++){
+                           //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
+                        if((ficha1.getX()<=(posX7[i]+35) && ficha1.getX()>=(posX7[i]-35)) && (ficha1.getY()<=(posY7[i]+35) && ficha1.getY()>=(posY7[i]-35))  ){
+                            movficha1++;
+                            movimientos++;
+                         }
+                         if((ficha2.getX()<=(posX7[i]+35)&&ficha2.getX()>=(posX7[i]-35)) && (ficha2.getY()<=(posY7[i]+35) && ficha2.getY()>=(posY7[i]-35))  ){
+                                movficha2++;
+                                movimientos++;
+
+                        }
+                    }
+                      if(movimientos>=2){
+                            turno=1;
+                            mover2=7;
+                            System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");                 
+                            JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
+
+                      }else{
+                          if(movficha1==1){
+                               turno=1;
+                               System.out.println("MOVER LA FICHA 1 ----++++++ 7");  
+                              if(hilo5!=null){
+                                      hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
+                                        hilo5.start();
+                                    }else{
+
+                                        hilo5 = new Contador(ficha1,7,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
+                                        hilo5.start();
+
+                                        }
+
+
+                                   }
+                          else{
+                              if(movficha2==1){
+                                  turno=1;
+                                  System.out.println("MOVER LA FICHA 22 ----++++++ 7");  
+                                  if(hilo6!=null){
+                                       hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                                       hilo6.start();
+                                    }else{
+
+                                                hilo6= new Contador(ficha2,7,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);
+                                                hilo6.start();
+
+
                                
                            }
                       }
                   }
-              }  }        
+              }  }      }
+            }    
         if((dado1+dado2)==5 || dado1==5 || dado2==5){
             movficha1=0;
             movficha2=0;
             movimientos=0;
-            turno=1;
+            turno=2;
             for(int i=0;i<posX5.length;i++){
                  //  System.out.println("ENTRO AQUI 1"+posX5[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
                 if((ficha1.getX()<=(posX5[i]+35) && ficha1.getX()>=(posX5[i]-35)) && (ficha1.getY()<=(posY5[i]+35) && ficha1.getY()>=(posY5[i]-35))  ){
@@ -693,6 +718,7 @@ public void turnos(){
                 }
             }
               if(movimientos>=2){
+                    turno=1;
                     mover2=5;
                      System.out.println("AQUI ESTOY 171111 "+movimientos);
                     ficha1.setEnabled(true);
@@ -701,6 +727,7 @@ public void turnos(){
                     
               }else{
                   if(movficha1==1){
+                       turno=1;
                        System.out.println("AQUI ESTOY 181111 " +movficha1);
                       if(hilo7!=null){
                                 hilo7= new Contador(ficha1,5,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
@@ -713,6 +740,7 @@ public void turnos(){
                            }
                   }else{
                       if(movficha2==1){
+                          turno=1;
                            System.out.println("AQUI ESTOY 191111 "+movficha2);
                          if(hilo8!=null){
                                 hilo8= new Contador(ficha2,5,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);                                 
@@ -726,7 +754,8 @@ public void turnos(){
                       }
                   }
               }}
-        if((dado1+dado2)==12){
+        if(salir1==0){
+          if((dado1+dado2)==12){
             movficha1=0;
             movficha2=0;
             movimientos=0;
@@ -767,12 +796,14 @@ public void turnos(){
                     }
              }
                      if(movimientos==0){
+                           turno=1;
                          mover2=12;
                          System.out.println("AQUI ESTOY 191111111 "+movficha2);
                          JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
                     
                      }else{
                          if(movficha1==0){
+                             turno=1;
                              System.out.println("AQUI ESTOY IICHA 1191111111 "+movficha2);
                              if(hilo17!=null){
                                 hilo17= new Contador(ficha1,12,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
@@ -785,6 +816,7 @@ public void turnos(){
                            }
                          }else{
                              if(movficha2==0){
+                                   turno=1;
                               System.out.println("AQUI ESTOY IICHA 2222191111111 "+movficha2);
                               if(hilo18!=null){
                                     hilo18= new Contador(ficha2,12,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);                                 
@@ -800,12 +832,12 @@ public void turnos(){
                      }
                      
              }
-        
+        }
         if((dado1==5 && dado2==5) ||(dado1+dado2==10)){
             movficha1=0;
             movficha2=0;
             movimientos=0;
-            turno=1;
+            turno=2;
         
              for(int i=0;i<posX5.length;i++){
                  
@@ -845,6 +877,7 @@ public void turnos(){
 
         }
              if(movimientos>=2){
+                    turno=1;
                     mover2=10;
                      System.out.println("AQUI ESTOY 171111 "+movimientos);
                     ficha1.setEnabled(true);
@@ -853,6 +886,7 @@ public void turnos(){
                    
               }else{
                   if(movficha1==1){
+                       turno=1;
                        System.out.println("AQUI ESTOY 181111 " +movficha1);
                       if(hilo7!=null){
                                 hilo7= new Contador(ficha1,10,ficha1.getX(),ficha1.getY(),ficha2,1,ficha3,ficha4);
@@ -865,6 +899,7 @@ public void turnos(){
                            }
                   }else{
                       if(movficha2==1){
+                           turno=1;
                            System.out.println("AQUI ESTOY 191111 "+movficha2);
                          if(hilo8!=null){
                                 hilo8= new Contador(ficha2,10,ficha2.getX(),ficha2.getY(),ficha1,1,ficha3,ficha4);                                
@@ -888,7 +923,8 @@ public void turnos(){
              JOptionPane.showMessageDialog(this, "Turno del jugador 2", "Error", JOptionPane.ERROR_MESSAGE);
         }     
         
-        } 
+        }
+            
        System.out.println("EL turno quedo en "+ turno);
     }
         
@@ -897,8 +933,10 @@ public void turnos(){
 
 
     private void movimientosj2(int dado1, int dado2, int jugador) {
-         System.out.println("JUGADOR2");
+   
+        System.out.println("JUGADOR2");
          turno=1;
+        int salir=0;
         int movimientos=0;
         int movficha1=0,movficha2=0;
         ficha1.setEnabled(false);
@@ -919,14 +957,16 @@ public void turnos(){
                 
                         System.out.println("AQUI ESTOY CUANDO ES PAR");
                          if(hilo15!=null){
-                            hilo15.reset();
+                             hilo15 = new Contador(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                            hilo15.start();
 
                              }else{
                             hilo15 = new Contador(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                             hilo15.start();
                            }
                            if(hilo16!=null){
-                               hilo16.reset();
+                              hilo16 = new Contador(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
+                              hilo16.start();
                             }else{
                                 hilo16 = new Contador(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
                                 hilo16.start();
@@ -946,44 +986,80 @@ public void turnos(){
                     }
                     System.out.println("El turno de aqui quedo en"+turno);
         }else{  
-            turno=1;
-                    if((dado1+dado2)==7){
+                turno=1;
+                if(dado1==dado2 ){
+                       salir=1;
+                        System.out.println("AQUI ESTOY CUANDO ES PAR por segunda vexddfdf");
+                        if(((ficha3.getX()>430 &&ficha3.getX()<660)&&(ficha3.getY()>5&&ficha3.getY()<205))){ 
+                              System.out.println("AQUI ESTOY CUANDO ES PAR por segunda vexddfdf12345678");
+                             if(hilo15!=null){
+                                    hilo15 = new Contador(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                                     hilo15.start();
+
+                             }else{
+                            hilo15 = new Contador(ficha3,1,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                            hilo15.start();
+                           }
+                        }
+                        if(((ficha4.getX()>430 &&ficha4.getX()<660)&&(ficha4.getY()>5 && ficha4.getY()<205))){
+                              System.out.println("AQUI ESTOY CUANDO ES PAR por segunda vexddfdf9876543");
+                            if(hilo16!=null){
+                               hilo16 = new Contador(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
+                                hilo16.start();
+                            }else{
+                                hilo16 = new Contador(ficha4,1,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
+                                hilo16.start();
+                           } 
+                        }
+                     }
+           
+                if((dado1+dado2)==7){
                        movimientos=0;
                        movficha1=0;
                        movficha2=0;
-                       turno=2;
-                       for(int i=0;i<posX7.length;i++){
+                       turno=1;
+                       if(ficha3.getX()>=670 && ficha3.getX()<=680 && ficha3.getY()>=300 && ficha3.getY()<=370){
+                           
+                            ficha3.setLocation(750, 440);
+                        }else{
+                            if(ficha4.getX()>=670 && ficha4.getX()<=680 && ficha4.getY()>=300 && ficha4.getY()<=370){
+                           
+                                ficha4.setLocation(810, 440);
+                           }else{
+                            for(int i=0;i<posX7.length;i++){
                               //System.out.println("ENTRO AQUI 1"+posX7[i]+"--"+ficha1.getX()+ficha2.getX()+"--"+ficha1.getY()+"--"+ficha2.getY());
-                           if((ficha3.getX()<=(posX7[i]+35) && ficha3.getX()>=(posX7[i]-35)) && (ficha3.getY()<=(posY7[i]+35) && ficha3.getY()>=(posY7[i]-35))  ){
-                               movficha1++;
-                               movimientos++;
+                                if((ficha3.getX()<=(posX7[i]+35) && ficha3.getX()>=(posX7[i]-35)) && (ficha3.getY()<=(posY7[i]+35) && ficha3.getY()>=(posY7[i]-35))  ){
+                                    movficha1++;
+                                    movimientos++;
+                                 }
+                                 if((ficha4.getX()<=(posX7[i]+35)&&ficha4.getX()>=(posX7[i]-35)) && (ficha4.getY()<=(posY7[i]+35) && ficha4.getY()>=(posY7[i]-35))  ){
+                                        movficha2++;
+                                        movimientos++;
+
+                                }
                             }
-                            if((ficha4.getX()<=(posX7[i]+35)&&ficha4.getX()>=(posX7[i]-35)) && (ficha4.getY()<=(posY7[i]+35) && ficha4.getY()>=(posY7[i]-35))  ){
-                                   movficha2++;
-                                   movimientos++;
+                              if(movimientos>=2){
+                                    turno=2;
+                                    mover2=7;
+                                    System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");
+                                    JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
 
-                           }
-                       }
-                         if(movimientos>=2){
+                              }else{
+                                  if(movficha1==1){
+                                        turno=2;
+                                      System.out.println("MOVER LA FICHA 1 ---- 7");  
+                                      if(hilo11!=null){
+                                               hilo12 = new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                                                hilo12.start();
+                                            }else{
+                                                hilo11 = new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
+                                                hilo11.start();
+                                           }
 
-                               mover2=7;
-                               System.out.println("ENTRO AQUI CUANDO ESTAN EN LA MISMA POSICION");
-                               JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
-                              
-                         }else{
-                             if(movficha1==1){
-                                 System.out.println("MOVER LA FICHA 1 ---- 7");  
-                                 if(hilo11!=null){
-                                          hilo12 = new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
-                                           hilo12.start();
-                                       }else{
-                                           hilo11 = new Contador(ficha3,7,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
-                                           hilo11.start();
-                                      }
-
-                                      }
+                                           }
                              else{
                                  if(movficha2==1){
+                                    turno=2;
                                    System.out.println("MOVER LA FICHA 2 --- 7");  
 
                                      if(hilo12!=null){
@@ -1001,9 +1077,9 @@ public void turnos(){
                          }
 
 
-                       }
+                       }}}
                    if((dado1+dado2)==5 || dado1==5 || dado2==5){
-                       turno=2;
+                       turno=1;
                        movficha1=0;
                        movficha2=0;
                        movimientos=0;
@@ -1022,12 +1098,14 @@ public void turnos(){
                            }
                        }
                          if(movimientos>=2){
+                               turno=2;
                                mover2=5;
                                 System.out.println("AQUI ESTOY 171111 -----"+movimientos);            
                                 JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
                               
                          }else{
                              if(movficha1==1){
+                                  turno=2;
                                   System.out.println("AQUI ESTOY 181111 ---" +movficha1);
                                  if(hilo13!=null){
                                           hilo13 = new Contador(ficha3,5,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
@@ -1040,6 +1118,7 @@ public void turnos(){
                                       }
                              }else{
                                  if(movficha2==1){
+                                       turno=2;
                                       System.out.println("AQUI ESTOY 191111--- "+movficha2);
                                     if(hilo14!=null){
                                           hilo14 = new Contador(ficha4,5,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);
@@ -1054,6 +1133,7 @@ public void turnos(){
                              }
                          }	
                }
+                   if(salir==0){
                     if((dado1+dado2)==12){
                        movficha1=0;
                        movficha2=0;
@@ -1095,6 +1175,7 @@ public void turnos(){
                                }
                         }
                                 if(movimientos==0){
+                       
                                     mover2=12;
                                     System.out.println("AQUI ESTOY 1911WEWE11 "+movficha2);
                                     JOptionPane.showMessageDialog(this, "Seleccione la ficha a mover", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1127,12 +1208,12 @@ public void turnos(){
 
 
                    }
-
+                   }
                    if((dado1==5 && dado2==5) ||(dado1+dado2==10)){
                        movficha1=0;
                        movficha2=0;
                        movimientos=0;
-                       turno=2;
+                       turno=1;
 
                         for(int i=0;i<posX5.length;i++){
 
@@ -1171,6 +1252,7 @@ public void turnos(){
                                }
                    }
                         if(movimientos>=2){
+                              turno=2;
                                mover2=10;
                                 System.out.println("AQUI ESTOY 171111 "+movimientos);
                                ficha1.setEnabled(true);
@@ -1179,7 +1261,8 @@ public void turnos(){
                            
                          }else{
                              if(movficha1==1){
-                                  System.out.println("AQUI ESTOY 181111 " +movficha1);
+                                 turno=2;
+                                 System.out.println("AQUI ESTOY 181111 " +movficha1);
                                  if(hilo7!=null){
                                            hilo7= new Contador(ficha3,10,ficha3.getX(),ficha3.getY(),ficha4,2,ficha1,ficha2);
                                            hilo7.start();
@@ -1191,7 +1274,8 @@ public void turnos(){
                                       }
                              }else{
                                  if(movficha2==1){
-                                      System.out.println("AQUI ESTOY 191111 "+movficha2);
+                                    turno=2;
+                                    System.out.println("AQUI ESTOY 191111 "+movficha2);
                                     if(hilo8!=null){
                                            hilo8= new Contador(ficha4,10,ficha4.getX(),ficha4.getY(),ficha3,2,ficha1,ficha2);                                
                                            hilo8.start();

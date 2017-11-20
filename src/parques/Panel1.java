@@ -55,13 +55,14 @@ public class Panel1 extends javax.swing.JPanel {
      */
     public void setTableModel(DefaultTableModel table_model_personas){
         this. table_model_personas =  table_model_personas;
+         while(table_model_personas.getRowCount()>0)table_model_personas.removeRow(0);
     }
     /**
      * Método para generar la tabla personas
      */
-    public void refreshTableModel()
+    public void refreshTableModel(String categoria)
     {
-       ArrayList<Persona> lista_personas=Repositorio.obtenerTodos();
+       ArrayList<Persona> lista_personas=Repositorio.obtenerTodos(categoria);
        while(table_model_personas.getRowCount()>0){
             table_model_personas.removeRow(0);
        }

@@ -48,7 +48,7 @@ public class Contador extends Thread {
  int []posicionesX={250,120,10,120,250,330,440,560,680,560,430,340};
  int []posicionesY={110,240,350,430,550,670,560,420,330,250,110,0};
      if(jugador==2){
-         
+           
           for(int x=0;x<=11;x++){
               
              if(s==12){

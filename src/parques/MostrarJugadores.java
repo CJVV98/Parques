@@ -99,7 +99,7 @@ public class MostrarJugadores extends javax.swing.JPanel {
         tablapersonas.setModel(table_model_personas);
         
         per.setTableModel(table_model_personas);
-        per.refreshTableModel();
+        per.refreshTableModel("Todos");
     }
 
 

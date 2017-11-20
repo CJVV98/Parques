@@ -546,11 +546,16 @@ public void turnos(){
             movimientos(dado11,dado21,jugador);
        }
        if(jugador==2){
-            movimientosj2(dado11,dado21,jugador);
+            try {
+                movimientosj2(dado11,dado21,jugador);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+            }
        }
     }
     
     private void movimientos(int dado1,int dado2,int jugador) {
+        lanzar.setEnabled(true);
         if(ficha1.getX()==750 && ficha1.getY()==360 && ficha2.getX()==810 && ficha2.getY()==360){
             LocalDateTime ahora = LocalDateTime.now();
             Timestamp ahora12 = Timestamp.valueOf(ahora); 
@@ -606,6 +611,17 @@ public void turnos(){
            turno=2;
            if(turno==2){
              JOptionPane.showMessageDialog(this, "Turno del jugador 2", "Error", JOptionPane.ERROR_MESSAGE);
+               try {
+                   Thread.sleep(300);
+               } catch (InterruptedException ex) {
+                   Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+               }
+             lanzarDados(turno);
+               try {
+                   Thread.sleep(300);
+               } catch (InterruptedException ex) {
+                   Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+               }
            }
            }
            System.out.println("El turno de aqui quedo en"+turno);
@@ -918,9 +934,20 @@ public void turnos(){
       
             
                  
-        
+       
         if(turno==2){
              JOptionPane.showMessageDialog(this, "Turno del jugador 2", "Error", JOptionPane.ERROR_MESSAGE);
+             lanzar.setEnabled(false);
+                try {
+                    Thread.sleep(300);
+                    lanzarDados(turno);
+                    
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Parques1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+        }else{
+            lanzar.setEnabled(true);
         }     
         
         }
@@ -932,7 +959,7 @@ public void turnos(){
         
 
 
-    private void movimientosj2(int dado1, int dado2, int jugador) {
+    private void movimientosj2(int dado1, int dado2, int jugador) throws InterruptedException {
    
         System.out.println("JUGADOR2");
          turno=1;
@@ -974,13 +1001,18 @@ public void turnos(){
                          }
                      }
                 if(bandera3<=3){
+                  lanzar.setEnabled(false);
                   System.out.println("ESTOY AQUI AUN CVCVESPERANDO");
                   turno=2;
+                  lanzarDados(turno);
+                  Thread.sleep(300);
                 }else{
+                    lanzar.setEnabled(true);
                     System.out.println("Entre aqui nos  eporqudsdsdsde?");
                     bandera3=0;
                     turno=1;
                     if(turno==1){
+                        lanzar.setEnabled(true);
                       JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     }
@@ -1292,9 +1324,13 @@ public void turnos(){
                    }
                 if(turno==1){
                         JOptionPane.showMessageDialog(this, "Turno del jugador 1", "Error", JOptionPane.ERROR_MESSAGE);
-                   }
+                        lanzar.setEnabled(true);
+                   }else{
+                            lanzar.setEnabled(false);                         
+                           lanzarDados(turno);
+                            Thread.sleep(200);
+                }
         }
-    
         
 
 }
